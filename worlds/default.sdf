@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <sdf version="1.9">
   <world name="default">
     <physics type="ode">
@@ -63,6 +63,128 @@
       </link>
       <pose>0 0 0 0 -0 0</pose>
       <self_collide>false</self_collide>
+    </model>
+
+    <!-- Landing stand for UAV: two rails with gap in middle for robot arm -->
+    <model name="landing_stand">
+      <static>true</static>
+      <pose>0 0 0 0 0 0</pose>
+
+      <link name="stand_link">
+        <!-- Left rail (y = -0.15) - top horizontal bar -->
+        <collision name="left_rail_collision">
+          <pose>0 -0.15 0.34 0 0 0</pose>
+          <geometry>
+            <box><size>0.30 0.05 0.02</size></box>
+          </geometry>
+        </collision>
+        <visual name="left_rail_visual">
+          <pose>0 -0.15 0.34 0 0 0</pose>
+          <geometry>
+            <box><size>0.30 0.05 0.02</size></box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.6 0.6 0.6 1</specular>
+          </material>
+        </visual>
+
+        <!-- Right rail (y = +0.15) - top horizontal bar -->
+        <collision name="right_rail_collision">
+          <pose>0 0.15 0.34 0 0 0</pose>
+          <geometry>
+            <box><size>0.30 0.05 0.02</size></box>
+          </geometry>
+        </collision>
+        <visual name="right_rail_visual">
+          <pose>0 0.15 0.34 0 0 0</pose>
+          <geometry>
+            <box><size>0.30 0.05 0.02</size></box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.6 0.6 0.6 1</specular>
+          </material>
+        </visual>
+
+        <!-- Left front post -->
+        <collision name="left_front_post_collision">
+          <pose>0.12 -0.15 0.165 0 0 0</pose>
+          <geometry>
+            <box><size>0.03 0.05 0.33</size></box>
+          </geometry>
+        </collision>
+        <visual name="left_front_post_visual">
+          <pose>0.12 -0.15 0.165 0 0 0</pose>
+          <geometry>
+            <box><size>0.03 0.05 0.33</size></box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.35 0.35 1</ambient>
+            <diffuse>0.45 0.45 0.45 1</diffuse>
+            <specular>0.5 0.5 0.5 1</specular>
+          </material>
+        </visual>
+
+        <!-- Left rear post -->
+        <collision name="left_rear_post_collision">
+          <pose>-0.12 -0.15 0.165 0 0 0</pose>
+          <geometry>
+            <box><size>0.03 0.05 0.33</size></box>
+          </geometry>
+        </collision>
+        <visual name="left_rear_post_visual">
+          <pose>-0.12 -0.15 0.165 0 0 0</pose>
+          <geometry>
+            <box><size>0.03 0.05 0.33</size></box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.35 0.35 1</ambient>
+            <diffuse>0.45 0.45 0.45 1</diffuse>
+            <specular>0.5 0.5 0.5 1</specular>
+          </material>
+        </visual>
+
+        <!-- Right front post -->
+        <collision name="right_front_post_collision">
+          <pose>0.12 0.15 0.165 0 0 0</pose>
+          <geometry>
+            <box><size>0.03 0.05 0.33</size></box>
+          </geometry>
+        </collision>
+        <visual name="right_front_post_visual">
+          <pose>0.12 0.15 0.165 0 0 0</pose>
+          <geometry>
+            <box><size>0.03 0.05 0.33</size></box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.35 0.35 1</ambient>
+            <diffuse>0.45 0.45 0.45 1</diffuse>
+            <specular>0.5 0.5 0.5 1</specular>
+          </material>
+        </visual>
+
+        <!-- Right rear post -->
+        <collision name="right_rear_post_collision">
+          <pose>-0.12 0.15 0.165 0 0 0</pose>
+          <geometry>
+            <box><size>0.03 0.05 0.33</size></box>
+          </geometry>
+        </collision>
+        <visual name="right_rear_post_visual">
+          <pose>-0.12 0.15 0.165 0 0 0</pose>
+          <geometry>
+            <box><size>0.03 0.05 0.33</size></box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.35 0.35 1</ambient>
+            <diffuse>0.45 0.45 0.45 1</diffuse>
+            <specular>0.5 0.5 0.5 1</specular>
+          </material>
+        </visual>
+      </link>
     </model>
     <light name="sunUTC" type="directional">
       <pose>0 0 500 0 -0 0</pose>
