@@ -1,13 +1,13 @@
 #!/bin/sh
 #
-# @name HolyBro QAV250
+# @name X500 HOP - UAM with 6-DoF Arm
 #
-# @url https://docs.px4.io/main/en/frames_multicopter/holybro_qav250_pixhawk4_mini
+# @url https://docs.px4.io/main/en/frames_multicopter/
 #
 # @type Quadrotor x
 # @class Copter
 #
-# @maintainer Beat Kueng <beat-kueng@gmx.net>
+# @maintainer wicom
 #
 # @board px4_fmu-v2 exclude
 # @board bitcraze_crazyflie exclude
@@ -20,26 +20,30 @@
 PX4_SIMULATOR=${PX4_SIMULATOR:=gz}
 PX4_GZ_WORLD=${PX4_GZ_WORLD:=default}
 PX4_SIM_MODEL=${PX4_SIM_MODEL:=x500_hop}
-PX4_GZ_MODEL_POSE=${PX4_GZ_MODEL_POSE:="0,0,0.5"}
-
 param set-default SIM_GZ_EN 1
 
-# Mixer: quad_x
+# Mixer: quad_x — SunnySky X2212-13 KV980
+# Motor positions match actual arm length (~0.159m from center)
+# Motor 0 (Revolute_15, quat4): front-right, CCW
+# Motor 1 (Revolute_12, quat1): rear-left,  CCW
+# Motor 2 (Revolute_14, quat3): front-left, CW
+# Motor 3 (Revolute_13, quat2): rear-right, CW
 param set-default CA_ROTOR_COUNT 4
-param set-default CA_ROTOR0_PX  0.15
-param set-default CA_ROTOR0_PY -0.15
-param set-default CA_ROTOR1_PX -0.15
-param set-default CA_ROTOR1_PY  0.15
-param set-default CA_ROTOR2_PX  0.15
-param set-default CA_ROTOR2_PY  0.15
-param set-default CA_ROTOR3_PX -0.15
-param set-default CA_ROTOR3_PY -0.15
+param set-default CA_ROTOR0_PX  0.159
+param set-default CA_ROTOR0_PY  0.159
+param set-default CA_ROTOR1_PX -0.159
+param set-default CA_ROTOR1_PY -0.159
+param set-default CA_ROTOR2_PX  0.159
+param set-default CA_ROTOR2_PY -0.159
+param set-default CA_ROTOR3_PX -0.159
+param set-default CA_ROTOR3_PY  0.159
 
 param set-default CA_ROTOR0_KM -0.05
 param set-default CA_ROTOR1_KM -0.05
 param set-default CA_ROTOR2_KM  0.05
 param set-default CA_ROTOR3_KM  0.05
-# The set does not include a battery, but most people will probably use 4S
+
+# 4S LiPo
 param set-default BAT1_N_CELLS 4
 
 param set-default SIM_GZ_EC_FUNC1 101
@@ -79,8 +83,11 @@ param set-default MC_YAW_P 4
 param set-default MPC_MANTHR_MIN 0
 param set-default MPC_MAN_TILT_MAX 60
 param set-default MPC_THR_CURVE 1
-param set-default MPC_THR_HOVER 0.25
+# Hover throttle for ~2.15kg UAM (drone 1.63kg + arm 0.52kg)
+# Total weight = 2.15×9.81 = 21.1N, max thrust = 33.3N → hover ratio ≈ 0.63
+param set-default MPC_THR_HOVER 0.63
 param set-default MPC_THR_MIN 0.05
 param set-default MPC_Z_VEL_I_ACC 1.7
 
 param set-default THR_MDL_FAC 0.3
+

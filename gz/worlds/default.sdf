@@ -68,7 +68,7 @@
     <!-- Landing stand for UAV: two rails with gap in middle for robot arm -->
     <model name="landing_stand">
       <static>true</static>
-      <pose>0 0 0 0 0 0</pose>
+      <pose>2 0 0 0 0 0</pose>
 
       <link name="stand_link">
         <!-- Left rail (y = -0.15) - top horizontal bar -->
