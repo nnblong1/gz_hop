@@ -100,6 +100,10 @@ private:
 	uORB::Subscription _vehicle_rates_setpoint_sub{ORB_ID(vehicle_rates_setpoint)};
 	uORB::Subscription _vehicle_status_sub{ORB_ID(vehicle_status)};
 
+	// External torque/thrust subscriptions (instance 1, written by uxrce_dds_client)
+	uORB::Subscription _ext_vehicle_torque_setpoint_sub{ORB_ID(vehicle_torque_setpoint), 1};
+	uORB::Subscription _ext_vehicle_thrust_setpoint_sub{ORB_ID(vehicle_thrust_setpoint), 1};
+
 	uORB::SubscriptionInterval _parameter_update_sub{ORB_ID(parameter_update), 1_s};
 
 	uORB::SubscriptionCallbackWorkItem _vehicle_angular_velocity_sub{this, ORB_ID(vehicle_angular_velocity)};
@@ -163,6 +167,8 @@ private:
 		(ParamFloat<px4::params::MC_ACRO_SUPEXPO>) _param_mc_acro_supexpo,		/**< superexpo stick curve shape (roll & pitch) */
 		(ParamFloat<px4::params::MC_ACRO_SUPEXPOY>) _param_mc_acro_supexpoy,		/**< superexpo stick curve shape (yaw) */
 
-		(ParamBool<px4::params::MC_BAT_SCALE_EN>) _param_mc_bat_scale_en
+		(ParamBool<px4::params::MC_BAT_SCALE_EN>) _param_mc_bat_scale_en,
+
+		(ParamBool<px4::params::MC_RATE_EXT_EN>) _param_mc_rate_ext_en
 	)
 };

@@ -193,77 +193,126 @@ MulticopterRateControl::Run()
 				_rate_control.resetIntegral();
 			}
 
-			// update saturation status from control allocation feedback
-			control_allocator_status_s control_allocator_status;
+			auto publish_internal_rate_control = [&]() {
+				// update saturation status from control allocation feedback
+				control_allocator_status_s control_allocator_status;
 
-			if (_control_allocator_status_sub.update(&control_allocator_status)) {
-				Vector<bool, 3> saturation_positive;
-				Vector<bool, 3> saturation_negative;
+				if (_control_allocator_status_sub.update(&control_allocator_status)) {
+					Vector<bool, 3> saturation_positive;
+					Vector<bool, 3> saturation_negative;
 
-				if (!control_allocator_status.torque_setpoint_achieved) {
-					for (size_t i = 0; i < 3; i++) {
-						if (control_allocator_status.unallocated_torque[i] > FLT_EPSILON) {
-							saturation_positive(i) = true;
+					if (!control_allocator_status.torque_setpoint_achieved) {
+						for (size_t i = 0; i < 3; i++) {
+							if (control_allocator_status.unallocated_torque[i] > FLT_EPSILON) {
+								saturation_positive(i) = true;
 
-						} else if (control_allocator_status.unallocated_torque[i] < -FLT_EPSILON) {
-							saturation_negative(i) = true;
+							} else if (control_allocator_status.unallocated_torque[i] < -FLT_EPSILON) {
+								saturation_negative(i) = true;
+							}
+						}
+					}
+
+					// TODO: send the unallocated value directly for better anti-windup
+					_rate_control.setSaturationStatus(saturation_positive, saturation_negative);
+				}
+
+				// run rate controller
+				Vector3f torque_setpoint =
+					_rate_control.update(rates, _rates_setpoint, angular_accel, dt, _maybe_landed || _landed);
+
+				// apply low-pass filtering on yaw axis to reduce high frequency torque caused by rotor acceleration
+				torque_setpoint(2) = _output_lpf_yaw.update(torque_setpoint(2), dt);
+
+				// publish rate controller status
+				rate_ctrl_status_s rate_ctrl_status{};
+				_rate_control.getRateControlStatus(rate_ctrl_status);
+				rate_ctrl_status.timestamp = hrt_absolute_time();
+				_controller_status_pub.publish(rate_ctrl_status);
+
+				// publish thrust and torque setpoints
+				vehicle_thrust_setpoint_s vehicle_thrust_setpoint{};
+				vehicle_torque_setpoint_s vehicle_torque_setpoint{};
+
+				_thrust_setpoint.copyTo(vehicle_thrust_setpoint.xyz);
+				vehicle_torque_setpoint.xyz[0] = PX4_ISFINITE(torque_setpoint(0)) ? torque_setpoint(0) : 0.f;
+				vehicle_torque_setpoint.xyz[1] = PX4_ISFINITE(torque_setpoint(1)) ? torque_setpoint(1) : 0.f;
+				vehicle_torque_setpoint.xyz[2] = PX4_ISFINITE(torque_setpoint(2)) ? torque_setpoint(2) : 0.f;
+
+				// scale setpoints by battery status if enabled
+				if (_param_mc_bat_scale_en.get()) {
+					if (_battery_status_sub.updated()) {
+						battery_status_s battery_status;
+
+						if (_battery_status_sub.copy(&battery_status) && battery_status.connected && battery_status.scale > 0.f) {
+							_battery_status_scale = battery_status.scale;
+						}
+					}
+
+					if (_battery_status_scale > 0.f) {
+						for (int i = 0; i < 3; i++) {
+							vehicle_thrust_setpoint.xyz[i] = math::constrain(vehicle_thrust_setpoint.xyz[i] * _battery_status_scale, -1.f, 1.f);
+							vehicle_torque_setpoint.xyz[i] = math::constrain(vehicle_torque_setpoint.xyz[i] * _battery_status_scale, -1.f, 1.f);
 						}
 					}
 				}
 
-				// TODO: send the unallocated value directly for better anti-windup
-				_rate_control.setSaturationStatus(saturation_positive, saturation_negative);
-			}
+				vehicle_thrust_setpoint.timestamp_sample = angular_velocity.timestamp_sample;
+				vehicle_thrust_setpoint.timestamp = hrt_absolute_time();
+				_vehicle_thrust_setpoint_pub.publish(vehicle_thrust_setpoint);
 
-			// run rate controller
-			Vector3f torque_setpoint =
-				_rate_control.update(rates, _rates_setpoint, angular_accel, dt, _maybe_landed || _landed);
+				vehicle_torque_setpoint.timestamp_sample = angular_velocity.timestamp_sample;
+				vehicle_torque_setpoint.timestamp = hrt_absolute_time();
+				_vehicle_torque_setpoint_pub.publish(vehicle_torque_setpoint);
 
-			// apply low-pass filtering on yaw axis to reduce high frequency torque caused by rotor acceleration
-			torque_setpoint(2) = _output_lpf_yaw.update(torque_setpoint(2), dt);
+				updateActuatorControlsStatus(vehicle_torque_setpoint, dt);
+			};
 
-			// publish rate controller status
-			rate_ctrl_status_s rate_ctrl_status{};
-			_rate_control.getRateControlStatus(rate_ctrl_status);
-			rate_ctrl_status.timestamp = hrt_absolute_time();
-			_controller_status_pub.publish(rate_ctrl_status);
+			if (!_param_mc_rate_ext_en.get()) {
+				publish_internal_rate_control();
 
-			// publish thrust and torque setpoints
-			vehicle_thrust_setpoint_s vehicle_thrust_setpoint{};
-			vehicle_torque_setpoint_s vehicle_torque_setpoint{};
+			} else {
+				// External mode is only valid while DDS keeps publishing fresh setpoints.
+				// If the external branch is idle/stale, fall back to PX4 internal rate control.
+				vehicle_torque_setpoint_s ext_torque{};
+				vehicle_thrust_setpoint_s ext_thrust{};
 
-			_thrust_setpoint.copyTo(vehicle_thrust_setpoint.xyz);
-			vehicle_torque_setpoint.xyz[0] = PX4_ISFINITE(torque_setpoint(0)) ? torque_setpoint(0) : 0.f;
-			vehicle_torque_setpoint.xyz[1] = PX4_ISFINITE(torque_setpoint(1)) ? torque_setpoint(1) : 0.f;
-			vehicle_torque_setpoint.xyz[2] = PX4_ISFINITE(torque_setpoint(2)) ? torque_setpoint(2) : 0.f;
+				const bool has_ext_torque = _ext_vehicle_torque_setpoint_sub.copy(&ext_torque);
+				const bool has_ext_thrust = _ext_vehicle_thrust_setpoint_sub.copy(&ext_thrust);
+				const bool ext_torque_fresh = has_ext_torque && ext_torque.timestamp > 0
+							      && hrt_elapsed_time(&ext_torque.timestamp) < 100_ms;
+				const bool ext_thrust_fresh = has_ext_thrust && ext_thrust.timestamp > 0
+							      && hrt_elapsed_time(&ext_thrust.timestamp) < 100_ms;
 
-			// scale setpoints by battery status if enabled
-			if (_param_mc_bat_scale_en.get()) {
-				if (_battery_status_sub.updated()) {
-					battery_status_s battery_status;
+				if (!ext_torque_fresh) {
+					publish_internal_rate_control();
 
-					if (_battery_status_sub.copy(&battery_status) && battery_status.connected && battery_status.scale > 0.f) {
-						_battery_status_scale = battery_status.scale;
+				} else {
+					vehicle_torque_setpoint_s vehicle_torque_setpoint{};
+					vehicle_thrust_setpoint_s vehicle_thrust_setpoint{};
+
+					vehicle_torque_setpoint.xyz[0] = ext_torque.xyz[0];
+					vehicle_torque_setpoint.xyz[1] = ext_torque.xyz[1];
+					vehicle_torque_setpoint.xyz[2] = ext_torque.xyz[2];
+
+					if (ext_thrust_fresh) {
+						vehicle_thrust_setpoint.xyz[0] = ext_thrust.xyz[0];
+						vehicle_thrust_setpoint.xyz[1] = ext_thrust.xyz[1];
+						vehicle_thrust_setpoint.xyz[2] = ext_thrust.xyz[2];
+
+					} else {
+						// Keep the vertical channel from PX4 when only external torque is active.
+						_thrust_setpoint.copyTo(vehicle_thrust_setpoint.xyz);
 					}
-				}
 
-				if (_battery_status_scale > 0.f) {
-					for (int i = 0; i < 3; i++) {
-						vehicle_thrust_setpoint.xyz[i] = math::constrain(vehicle_thrust_setpoint.xyz[i] * _battery_status_scale, -1.f, 1.f);
-						vehicle_torque_setpoint.xyz[i] = math::constrain(vehicle_torque_setpoint.xyz[i] * _battery_status_scale, -1.f, 1.f);
-					}
+					vehicle_torque_setpoint.timestamp_sample = angular_velocity.timestamp_sample;
+					vehicle_torque_setpoint.timestamp = hrt_absolute_time();
+					_vehicle_torque_setpoint_pub.publish(vehicle_torque_setpoint);
+
+					vehicle_thrust_setpoint.timestamp_sample = angular_velocity.timestamp_sample;
+					vehicle_thrust_setpoint.timestamp = hrt_absolute_time();
+					_vehicle_thrust_setpoint_pub.publish(vehicle_thrust_setpoint);
 				}
 			}
-
-			vehicle_thrust_setpoint.timestamp_sample = angular_velocity.timestamp_sample;
-			vehicle_thrust_setpoint.timestamp = hrt_absolute_time();
-			_vehicle_thrust_setpoint_pub.publish(vehicle_thrust_setpoint);
-
-			vehicle_torque_setpoint.timestamp_sample = angular_velocity.timestamp_sample;
-			vehicle_torque_setpoint.timestamp = hrt_absolute_time();
-			_vehicle_torque_setpoint_pub.publish(vehicle_torque_setpoint);
-
-			updateActuatorControlsStatus(vehicle_torque_setpoint, dt);
 
 		}
 	}

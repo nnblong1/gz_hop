@@ -71,6 +71,9 @@ publications:
   - topic: /fmu/out/vehicle_status
     type: px4_msgs::msg::VehicleStatus
 
+  - topic: /fmu/out/vehicle_rates_setpoint
+    type: px4_msgs::msg::VehicleRatesSetpoint
+
   - topic: /fmu/out/airspeed_validated
     type: px4_msgs::msg::AirspeedValidated
 

@@ -306,3 +306,17 @@ PARAM_DEFINE_INT32(MC_BAT_SCALE_EN, 0);
  * @group Multicopter Rate Control
  */
 PARAM_DEFINE_FLOAT(MC_YAW_TQ_CUTOFF, 2.f);
+
+/**
+ * External rate controller enable
+ *
+ * When enabled, the internal PID rate controller is bypassed.
+ * The module still routes vehicle_rates_setpoint from the attitude
+ * controller but does NOT compute or publish vehicle_torque_setpoint /
+ * vehicle_thrust_setpoint. An external controller (e.g. RBFNN via
+ * uXRCE-DDS) must publish those topics instead.
+ *
+ * @boolean
+ * @group Multicopter Rate Control
+ */
+PARAM_DEFINE_INT32(MC_RATE_EXT_EN, 0);
