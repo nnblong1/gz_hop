@@ -66,6 +66,7 @@
     </model>
 
     <!-- Landing stand for UAV: two rails with gap in middle for robot arm -->
+    <!-- Landing stand for UAV: two rails with gap in middle for robot arm -->
     <model name="landing_stand">
       <static>true</static>
       <pose>0 0 0 0 0 0</pose>
@@ -73,7 +74,7 @@
       <link name="stand_link">
         <!-- Left rail (y = -0.15) - top horizontal bar -->
         <visual name="left_rail_visual">
-          <pose>0 -0.15 0.90 0 0 0</pose>
+          <pose>0 -0.15 1.42 0 0 0</pose>
           <geometry>
             <box><size>0.30 0.05 0.02</size></box>
           </geometry>
@@ -84,7 +85,7 @@
           </material>
         </visual>
         <collision name="left_rail_collision">
-          <pose>0 -0.15 0.90 0 0 0</pose>
+          <pose>0 -0.15 1.42 0 0 0</pose>
           <geometry>
             <box><size>0.30 0.05 0.02</size></box>
           </geometry>
@@ -106,7 +107,7 @@
 
         <!-- Right rail (y = +0.15) - top horizontal bar -->
         <visual name="right_rail_visual">
-          <pose>0 0.15 0.90 0 0 0</pose>
+          <pose>0 0.15 1.42 0 0 0</pose>
           <geometry>
             <box><size>0.30 0.05 0.02</size></box>
           </geometry>
@@ -117,7 +118,7 @@
           </material>
         </visual>
         <collision name="right_rail_collision">
-          <pose>0 0.15 0.90 0 0 0</pose>
+          <pose>0 0.15 1.42 0 0 0</pose>
           <geometry>
             <box><size>0.30 0.05 0.02</size></box>
           </geometry>
@@ -139,9 +140,9 @@
 
         <!-- Left front post -->
         <visual name="left_front_post_visual">
-          <pose>0.12 -0.15 0.445 0 0 0</pose>
+          <pose>0.12 -0.15 0.705 0 0 0</pose>
           <geometry>
-            <box><size>0.03 0.05 0.89</size></box>
+            <box><size>0.03 0.05 1.41</size></box>
           </geometry>
           <material>
             <ambient>0.35 0.35 0.35 1</ambient>
@@ -152,9 +153,9 @@
 
         <!-- Left rear post -->
         <visual name="left_rear_post_visual">
-          <pose>-0.12 -0.15 0.445 0 0 0</pose>
+          <pose>-0.12 -0.15 0.705 0 0 0</pose>
           <geometry>
-            <box><size>0.03 0.05 0.89</size></box>
+            <box><size>0.03 0.05 1.41</size></box>
           </geometry>
           <material>
             <ambient>0.35 0.35 0.35 1</ambient>
@@ -165,9 +166,9 @@
 
         <!-- Right front post -->
         <visual name="right_front_post_visual">
-          <pose>0.12 0.15 0.445 0 0 0</pose>
+          <pose>0.12 0.15 0.705 0 0 0</pose>
           <geometry>
-            <box><size>0.03 0.05 0.89</size></box>
+            <box><size>0.03 0.05 1.41</size></box>
           </geometry>
           <material>
             <ambient>0.35 0.35 0.35 1</ambient>
@@ -178,9 +179,9 @@
 
         <!-- Right rear post -->
         <visual name="right_rear_post_visual">
-          <pose>-0.12 0.15 0.445 0 0 0</pose>
+          <pose>-0.12 0.15 0.705 0 0 0</pose>
           <geometry>
-            <box><size>0.03 0.05 0.89</size></box>
+            <box><size>0.03 0.05 1.41</size></box>
           </geometry>
           <material>
             <ambient>0.35 0.35 0.35 1</ambient>
