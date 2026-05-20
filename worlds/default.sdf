@@ -72,14 +72,8 @@
 
       <link name="stand_link">
         <!-- Left rail (y = -0.15) - top horizontal bar -->
-        <collision name="left_rail_collision">
-          <pose>0 -0.15 0.34 0 0 0</pose>
-          <geometry>
-            <box><size>0.30 0.05 0.02</size></box>
-          </geometry>
-        </collision>
         <visual name="left_rail_visual">
-          <pose>0 -0.15 0.34 0 0 0</pose>
+          <pose>0 -0.15 0.90 0 0 0</pose>
           <geometry>
             <box><size>0.30 0.05 0.02</size></box>
           </geometry>
@@ -89,16 +83,30 @@
             <specular>0.6 0.6 0.6 1</specular>
           </material>
         </visual>
+        <collision name="left_rail_collision">
+          <pose>0 -0.15 0.90 0 0 0</pose>
+          <geometry>
+            <box><size>0.30 0.05 0.02</size></box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.8</mu>
+                <mu2>0.8</mu2>
+              </ode>
+            </friction>
+            <contact>
+              <ode>
+                <kp>1e6</kp>
+                <kd>100</kd>
+              </ode>
+            </contact>
+          </surface>
+        </collision>
 
         <!-- Right rail (y = +0.15) - top horizontal bar -->
-        <collision name="right_rail_collision">
-          <pose>0 0.15 0.34 0 0 0</pose>
-          <geometry>
-            <box><size>0.30 0.05 0.02</size></box>
-          </geometry>
-        </collision>
         <visual name="right_rail_visual">
-          <pose>0 0.15 0.34 0 0 0</pose>
+          <pose>0 0.15 0.90 0 0 0</pose>
           <geometry>
             <box><size>0.30 0.05 0.02</size></box>
           </geometry>
@@ -108,18 +116,32 @@
             <specular>0.6 0.6 0.6 1</specular>
           </material>
         </visual>
+        <collision name="right_rail_collision">
+          <pose>0 0.15 0.90 0 0 0</pose>
+          <geometry>
+            <box><size>0.30 0.05 0.02</size></box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.8</mu>
+                <mu2>0.8</mu2>
+              </ode>
+            </friction>
+            <contact>
+              <ode>
+                <kp>1e6</kp>
+                <kd>100</kd>
+              </ode>
+            </contact>
+          </surface>
+        </collision>
 
         <!-- Left front post -->
-        <collision name="left_front_post_collision">
-          <pose>0.12 -0.15 0.165 0 0 0</pose>
-          <geometry>
-            <box><size>0.03 0.05 0.33</size></box>
-          </geometry>
-        </collision>
         <visual name="left_front_post_visual">
-          <pose>0.12 -0.15 0.165 0 0 0</pose>
+          <pose>0.12 -0.15 0.445 0 0 0</pose>
           <geometry>
-            <box><size>0.03 0.05 0.33</size></box>
+            <box><size>0.03 0.05 0.89</size></box>
           </geometry>
           <material>
             <ambient>0.35 0.35 0.35 1</ambient>
@@ -129,16 +151,10 @@
         </visual>
 
         <!-- Left rear post -->
-        <collision name="left_rear_post_collision">
-          <pose>-0.12 -0.15 0.165 0 0 0</pose>
-          <geometry>
-            <box><size>0.03 0.05 0.33</size></box>
-          </geometry>
-        </collision>
         <visual name="left_rear_post_visual">
-          <pose>-0.12 -0.15 0.165 0 0 0</pose>
+          <pose>-0.12 -0.15 0.445 0 0 0</pose>
           <geometry>
-            <box><size>0.03 0.05 0.33</size></box>
+            <box><size>0.03 0.05 0.89</size></box>
           </geometry>
           <material>
             <ambient>0.35 0.35 0.35 1</ambient>
@@ -148,16 +164,10 @@
         </visual>
 
         <!-- Right front post -->
-        <collision name="right_front_post_collision">
-          <pose>0.12 0.15 0.165 0 0 0</pose>
-          <geometry>
-            <box><size>0.03 0.05 0.33</size></box>
-          </geometry>
-        </collision>
         <visual name="right_front_post_visual">
-          <pose>0.12 0.15 0.165 0 0 0</pose>
+          <pose>0.12 0.15 0.445 0 0 0</pose>
           <geometry>
-            <box><size>0.03 0.05 0.33</size></box>
+            <box><size>0.03 0.05 0.89</size></box>
           </geometry>
           <material>
             <ambient>0.35 0.35 0.35 1</ambient>
@@ -167,16 +177,10 @@
         </visual>
 
         <!-- Right rear post -->
-        <collision name="right_rear_post_collision">
-          <pose>-0.12 0.15 0.165 0 0 0</pose>
-          <geometry>
-            <box><size>0.03 0.05 0.33</size></box>
-          </geometry>
-        </collision>
         <visual name="right_rear_post_visual">
-          <pose>-0.12 0.15 0.165 0 0 0</pose>
+          <pose>-0.12 0.15 0.445 0 0 0</pose>
           <geometry>
-            <box><size>0.03 0.05 0.33</size></box>
+            <box><size>0.03 0.05 0.89</size></box>
           </geometry>
           <material>
             <ambient>0.35 0.35 0.35 1</ambient>

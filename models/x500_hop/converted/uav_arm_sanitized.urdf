@@ -1,0 +1,1094 @@
+<?xml version="1.0" ?>
+<robot name="uav_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="2.6053033236148976e-09 0.00032839666072493874 0.6000000098794288" rpy="0 0 0"/>
+    <mass value="0.040941821553539655"/>
+    <inertia ixx="3.2e-05" iyy="8.8e-05" izz="0.00012" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="FlameWheel_1_1">
+  <inertial>
+    <origin xyz="-0.06258117664329169 -0.04808716504955769 0.027719245518458946" rpy="0 0 0"/>
+    <mass value="0.05180135700875499"/>
+    <inertia ixx="0.000129" iyy="0.000129" izz="0.000246" ixy="-0.000119" iyz="-2e-06" ixz="-2e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.032032 0.046528 -0.600801" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/FlameWheel_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.032032 0.046528 -0.600801" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/FlameWheel_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="FlameWheel_3_1">
+  <inertial>
+    <origin xyz="0.048085176643291525 0.06258316504955241 0.027719245518459168" rpy="0 0 0"/>
+    <mass value="0.05180135700875499"/>
+    <inertia ixx="0.000129" iyy="0.000129" izz="0.000246" ixy="-0.000119" iyz="2e-06" ixz="2e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.046528 -0.032032 -0.600801" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/FlameWheel_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.046528 -0.032032 -0.600801" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/FlameWheel_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="FlameWheel_2_1">
+  <inertial>
+    <origin xyz="-0.06258316504955502 0.048085176643290956 0.027719245518459168" rpy="0 0 0"/>
+    <mass value="0.05180135700875499"/>
+    <inertia ixx="0.000129" iyy="0.000129" izz="0.000246" ixy="0.000119" iyz="2e-06" ixz="-2e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.032032 -0.046528 -0.600801" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/FlameWheel_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.032032 -0.046528 -0.600801" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/FlameWheel_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="FlameWheel_4_1">
+  <inertial>
+    <origin xyz="0.06258316504955314 -0.04808517664329423 0.027719245518458946" rpy="0 0 0"/>
+    <mass value="0.05180135700875499"/>
+    <inertia ixx="0.000129" iyy="0.000129" izz="0.000246" ixy="0.000119" iyz="-2e-06" ixz="2e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.032032 0.046528 -0.600801" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/FlameWheel_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.032032 0.046528 -0.600801" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/FlameWheel_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="base_uav_1">
+  <inertial>
+    <origin xyz="-0.048082970130653595 0.03146642943763587 0.0008261222063312701" rpy="0 0 0"/>
+    <mass value="0.022928667761253782"/>
+    <inertia ixx="2.1e-05" iyy="2e-05" izz="4.1e-05" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.048083 0.031466 -0.637606" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/base_uav_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.048083 0.031466 -0.637606" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/base_uav_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motor_3_1">
+  <inertial>
+    <origin xyz="-3.924456180859348e-06 -1.6503261869860175e-06 0.016548289023201934" rpy="0 0 0"/>
+    <mass value="0.050024781404252275"/>
+    <inertia ixx="1e-05" iyy="1e-05" izz="5e-06" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.158912 -0.158901 -0.637851" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/motor_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.158912 -0.158901 -0.637851" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/motor_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motor_2_1">
+  <inertial>
+    <origin xyz="1.650326184404749e-06 -3.924456181497726e-06 0.016548289023202045" rpy="0 0 0"/>
+    <mass value="0.05002478140425227"/>
+    <inertia ixx="1e-05" iyy="1e-05" izz="5e-06" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.158901 -0.158912 -0.637851" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/motor_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.158901 -0.158912 -0.637851" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/motor_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motor_1_1">
+  <inertial>
+    <origin xyz="1.9600295324273542e-06 -3.745146665901089e-06 0.016548289023201934" rpy="0 0 0"/>
+    <mass value="0.05002478140425227"/>
+    <inertia ixx="1e-05" iyy="1e-05" izz="5e-06" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.158912 0.158901 -0.637851" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/motor_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.158912 0.158901 -0.637851" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/motor_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motor_4_1">
+  <inertial>
+    <origin xyz="1.7807200131114698e-06 -3.435443317656439e-06 0.016548289023201823" rpy="0 0 0"/>
+    <mass value="0.05002478140425227"/>
+    <inertia ixx="1e-05" iyy="1e-05" izz="5e-06" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.158901 0.158912 -0.637851" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/motor_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.158901 0.158912 -0.637851" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/motor_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hop_dieukhien_1">
+  <inertial>
+    <origin xyz="-1.900701818158268e-15 -2.698050627836599e-15 0.025000114186135902" rpy="0 0 0"/>
+    <mass value="0.6500000000000001"/>
+    <inertia ixx="0.000677" iyy="0.000677" izz="0.001083" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 0.0 -0.639257" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/hop_dieukhien_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.0 -0.639257" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/hop_dieukhien_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="pin_uav_1">
+  <inertial>
+    <origin xyz="-1.896260926059767e-15 0.6392569999999973 -0.024674885813864122" rpy="0 0 0"/>
+    <mass value="0.35217000000000004"/>
+    <inertia ixx="7.4e-05" iyy="0.00068" izz="0.000715" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 0.639257 -0.638432" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/pin_uav_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.639257 -0.638432" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/pin_uav_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="pin_pi_1">
+  <inertial>
+    <origin xyz="-1.9007018181582677e-15 -2.719491298819321e-15 0.013500114186135947" rpy="0 0 0"/>
+    <mass value="0.17999954761860618"/>
+    <inertia ixx="5.7e-05" iyy="0.000101" izz="0.000138" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 0.0 -0.689257" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/pin_pi_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.0 -0.689257" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/pin_pi_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="quat_3_1">
+  <inertial>
+    <origin xyz="-4.377777995667742e-07 2.107428410946799e-07 -0.006172847917406243" rpy="0 0 0"/>
+    <mass value="0.010003421848674698"/>
+    <inertia ixx="1.6e-05" iyy="3.1e-05" izz="4.7e-05" ixy="2.2e-05" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.158912 -0.158901 -0.691351" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/quat_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.158912 -0.158901 -0.691351" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/quat_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="quat_2_1">
+  <inertial>
+    <origin xyz="-6.334943444818997e-08 -4.864444943519786e-07 -0.006172847917406132" rpy="0 0 0"/>
+    <mass value="0.010003421848674698"/>
+    <inertia ixx="4.6e-05" iyy="0.0" izz="4.7e-05" ixy="1e-06" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.158901 -0.158912 -0.691351" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/quat_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.158901 -0.158912 -0.691351" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/quat_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="quat_1_1">
+  <inertial>
+    <origin xyz="3.4640321444623368e-09 -8.607751988964907e-08 -0.006172847917406243" rpy="0 0 0"/>
+    <mass value="0.010003421848674698"/>
+    <inertia ixx="1e-06" iyy="4.6e-05" izz="4.7e-05" ixy="-5e-06" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.158912 0.158901 -0.691351" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/quat_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.158912 0.158901 -0.691351" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/quat_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="quat_4_1">
+  <inertial>
+    <origin xyz="-1.7584548714366655e-07 2.236258283272452e-07 -0.0061728479174065765" rpy="0 0 0"/>
+    <mass value="0.010003421848674698"/>
+    <inertia ixx="1e-06" iyy="4.6e-05" izz="4.7e-05" ixy="-5e-06" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.158901 0.158912 -0.691351" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/quat_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.158901 0.158912 -0.691351" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/quat_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="gay_arm_1_1">
+  <inertial>
+    <origin xyz="-0.0465303737979253 -6.281224837478838e-08 -0.022160368895670857" rpy="0 0 0"/>
+    <mass value="0.021002942230888496"/>
+    <inertia ixx="0.0" iyy="0.000175" izz="0.000175" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.046528 -0.032032 -0.599199" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/gay_arm_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.046528 -0.032032 -0.599199" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/gay_arm_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="gay_arm_2_1">
+  <inertial>
+    <origin xyz="-0.04653037379792534 6.281224520371387e-08 -0.022160368895670857" rpy="0 0 0"/>
+    <mass value="0.021002942230888496"/>
+    <inertia ixx="0.0" iyy="0.000175" izz="0.000175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.046528 0.032032 -0.599199" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/gay_arm_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.046528 0.032032 -0.599199" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/gay_arm_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="camera_1">
+  <inertial>
+    <origin xyz="-0.28175572370346924 -0.12796793720039393 0.05534217907346062" rpy="0 0 0"/>
+    <mass value="0.09999979420755582"/>
+    <inertia ixx="6e-05" iyy="3e-05" izz="6.1e-05" ixy="-0.0" iyz="0.0" ixz="-1.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.416697 -0.127966 -0.544667" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.416697 -0.127966 -0.544667" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="pin_quat_2_1">
+  <inertial>
+    <origin xyz="-0.37979028243848045 0.5089029727351317 -0.08975699999999898" rpy="0 0 0"/>
+    <mass value="0.02499875"/>
+    <inertia ixx="2e-06" iyy="2e-06" izz="4e-06" ixy="1e-06" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.288494 0.417596 -0.730708" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/pin_quat_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.288494 0.417596 -0.730708" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/pin_quat_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="pin_quat_3_1">
+  <inertial>
+    <origin xyz="0.3797829727351323 0.5089102824384779 -0.08974599999999922" rpy="0 0 0"/>
+    <mass value="0.02499875"/>
+    <inertia ixx="2e-06" iyy="2e-06" izz="4e-06" ixy="-1e-06" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.288476 0.417614 -0.730697" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/pin_quat_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.288476 0.417614 -0.730697" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/pin_quat_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="pin_quat_1_1">
+  <inertial>
+    <origin xyz="-0.5089099727351325 -0.37978328243848314 0.09284600000000087" rpy="0 0 0"/>
+    <mass value="0.02499875"/>
+    <inertia ixx="2e-06" iyy="2e-06" izz="4e-06" ixy="-1e-06" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.417603 -0.288487 -0.548105" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/pin_quat_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.417603 -0.288487 -0.548105" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/pin_quat_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="pin_quat_4_1">
+  <inertial>
+    <origin xyz="0.5089032824384786 -0.379789972735135 0.09285700000000086" rpy="0 0 0"/>
+    <mass value="0.02499875"/>
+    <inertia ixx="2e-06" iyy="2e-06" izz="4e-06" ixy="1e-06" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.417607 -0.288483 -0.548094" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/pin_quat_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.417607 -0.288483 -0.548094" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/pin_quat_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="GPS_1">
+  <inertial>
+    <origin xyz="0.07999999999982547 0.6392569999999973 0.06573724971827521" rpy="0 0 0"/>
+    <mass value="0.05002471639864258"/>
+    <inertia ixx="4.7e-05" iyy="4.7e-05" izz="1.1e-05" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 0.639257 -0.638432" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/GPS_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.639257 -0.638432" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/GPS_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="base_arm_1">
+  <inertial>
+    <origin xyz="0.4167443033603202 0.12797121369038308 -0.04149401858366086" rpy="0 0 0"/>
+    <mass value="0.02384500796011016"/>
+    <inertia ixx="1.6e-05" iyy="1e-05" izz="2.5e-05" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.416701 0.127966 -0.608731" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/base_arm_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.416701 0.127966 -0.608731" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/base_arm_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="servo_1_1">
+  <inertial>
+    <origin xyz="0.023710762122076904 0.003899937316566216 0.007047451607639421" rpy="0 0 0"/>
+    <mass value="0.07232595078747217"/>
+    <inertia ixx="1.2e-05" iyy="1.9e-05" izz="1.2e-05" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.023892 0.003892 -0.560449" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/servo_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.023892 0.003892 -0.560449" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/servo_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_1_1">
+  <inertial>
+    <origin xyz="0.011220493117939531 -0.0030974761031022464 -0.015638420213961446" rpy="0 0 0"/>
+    <mass value="0.03207346368318684"/>
+    <inertia ixx="1e-05" iyy="1.6e-05" izz="1.7e-05" ixy="1e-06" iyz="-1e-06" ixz="4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.010705 -8e-06 -0.541249" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/link_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.010705 -8e-06 -0.541249" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/link_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="servo_2_1">
+  <inertial>
+    <origin xyz="-0.02416319664567411 -0.007047509654397052 -0.0038997379987668612" rpy="0 0 0"/>
+    <mass value="0.07232595078747217"/>
+    <inertia ixx="1.2e-05" iyy="1.2e-05" izz="1.9e-05" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.038226 -0.007008 -0.507525" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/servo_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.038226 -0.007008 -0.507525" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/servo_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_2_1">
+  <inertial>
+    <origin xyz="-0.007210969414248912 -0.0197847895705189 0.43799621035557323" rpy="0 0 0"/>
+    <mass value="0.08154393013878859"/>
+    <inertia ixx="0.000155" iyy="0.000128" izz="6.7e-05" ixy="-0.0" iyz="2.6e-05" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.01075 -0.026216 0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/link_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.01075 -0.026216 0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/link_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="servo_3_1">
+  <inertial>
+    <origin xyz="2.9579888136989363e-08 -0.026247509654396938 -0.010523502350837544" rpy="0 0 0"/>
+    <mass value="0.06107524733164316"/>
+    <inertia ixx="1.6e-05" iyy="1e-05" izz="1e-05" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.003539 -0.027208 -0.348625" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/servo_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.003539 -0.027208 -0.348625" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/servo_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_3_1">
+  <inertial>
+    <origin xyz="-0.023948964956288153 -0.02356078317377698 0.008245853923793456" rpy="0 0 0"/>
+    <mass value="0.04211261488564385"/>
+    <inertia ixx="3.1e-05" iyy="3.4e-05" izz="1.7e-05" ixy="1e-06" iyz="1e-06" ixz="-7e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.007439 -0.008008 -0.313938" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/link_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.007439 -0.008008 -0.313938" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/link_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="servo_4_1">
+  <inertial>
+    <origin xyz="3.429106741614785e-08 -0.015504730000590472 0.002772764093444957" rpy="0 0 0"/>
+    <mass value="0.023764535428915497"/>
+    <inertia ixx="3e-06" iyy="2e-06" izz="1e-06" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.026311 -0.002208 -0.271122" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/servo_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.026311 -0.002208 -0.271122" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/servo_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_4_1">
+  <inertial>
+    <origin xyz="7.192355496236924e-05 0.0008718452459813945 -0.023911713461690076" rpy="0 0 0"/>
+    <mass value="0.015631200996358827"/>
+    <inertia ixx="5e-06" iyy="5e-06" izz="3e-06" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.026311 0.018242 -0.256122" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/link_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.026311 0.018242 -0.256122" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/link_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="servo_5_1">
+  <inertial>
+    <origin xyz="-0.015504638416272518 -0.002772603076066449 2.1898963067923383e-07" rpy="0 0 0"/>
+    <mass value="0.023764535428915497"/>
+    <inertia ixx="2e-06" iyy="1e-06" izz="3e-06" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.011111 -0.004758 -0.213622" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/servo_5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.011111 -0.004758 -0.213622" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/servo_5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_5_1">
+  <inertial>
+    <origin xyz="6.410358945283662e-05 0.01260581899217313 -0.03856129254243296" rpy="0 0 0"/>
+    <mass value="0.031034602762987303"/>
+    <inertia ixx="3.8e-05" iyy="3.8e-05" izz="5e-06" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.031561 -0.019758 -0.213622" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/link_5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.031561 -0.019758 -0.213622" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/link_5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="servo_6_1">
+  <inertial>
+    <origin xyz="-0.01550463841627462 0.0027724871315622287 2.1787204354528633e-07" rpy="0 0 0"/>
+    <mass value="0.023764535428915497"/>
+    <inertia ixx="2e-06" iyy="1e-06" izz="3e-06" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.016361 -0.012258 -0.138622" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/servo_6_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.016361 -0.012258 -0.138622" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/servo_6_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hopbut_1">
+  <inertial>
+    <origin xyz="1.4881337144279083e-05 -0.009899860319811944 2.1784866890972587e-07" rpy="0 0 0"/>
+    <mass value="0.01013794554176892"/>
+    <inertia ixx="1e-06" iyy="1e-06" izz="1e-06" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.036811 0.002742 -0.138622" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/hopbut_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.036811 0.002742 -0.138622" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/hopbut_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="but_1">
+  <inertial>
+    <origin xyz="3.361206331320421e-08 -5.797225230419478e-08 -0.024515770682110055" rpy="0 0 0"/>
+    <mass value="0.00508404563084331"/>
+    <inertia ixx="1e-06" iyy="1e-06" izz="0.0" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.036811 0.014992 -0.128622" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/but_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.036811 0.014992 -0.128622" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/but_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ngoibut_1">
+  <inertial>
+    <origin xyz="3.361206331320421e-08 -5.7972252425625426e-08 2.1787204376733094e-07" rpy="0 0 0"/>
+    <mass value="8.7113746290167e-07"/>
+    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.036811 0.014992 -0.078622" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/ngoibut_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.036811 0.014992 -0.078622" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="model://x500_hop/mesh_backup/meshes/ngoibut_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rigid 1" type="fixed">
+  <origin xyz="-0.032032 -0.046528 0.600801" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="FlameWheel_1_1"/>
+</joint>
+
+<joint name="Rigid 3" type="fixed">
+  <origin xyz="0.046528 0.032032 0.600801" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="FlameWheel_3_1"/>
+</joint>
+
+<joint name="Rigid 4" type="fixed">
+  <origin xyz="-0.032032 0.046528 0.600801" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="FlameWheel_2_1"/>
+</joint>
+
+<joint name="Rigid 5" type="fixed">
+  <origin xyz="0.032032 -0.046528 0.600801" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="FlameWheel_4_1"/>
+</joint>
+
+<joint name="Rigid 6" type="fixed">
+  <origin xyz="0.016051 0.015062 0.036805" rpy="0 0 0"/>
+  <parent link="FlameWheel_4_1"/>
+  <child link="base_uav_1"/>
+</joint>
+
+<joint name="Rigid 7" type="fixed">
+  <origin xyz="0.112384 0.126869 0.03705" rpy="0 0 0"/>
+  <parent link="FlameWheel_3_1"/>
+  <child link="motor_3_1"/>
+</joint>
+
+<joint name="Rigid 8" type="fixed">
+  <origin xyz="-0.126869 0.112384 0.03705" rpy="0 0 0"/>
+  <parent link="FlameWheel_2_1"/>
+  <child link="motor_2_1"/>
+</joint>
+
+<joint name="Rigid 9" type="fixed">
+  <origin xyz="-0.12688 -0.112373 0.03705" rpy="0 0 0"/>
+  <parent link="FlameWheel_1_1"/>
+  <child link="motor_1_1"/>
+</joint>
+
+<joint name="Rigid 10" type="fixed">
+  <origin xyz="0.126869 -0.112384 0.03705" rpy="0 0 0"/>
+  <parent link="FlameWheel_4_1"/>
+  <child link="motor_4_1"/>
+</joint>
+
+<joint name="Rigid 11" type="fixed">
+  <origin xyz="-0.048083 0.031466 0.001651" rpy="0 0 0"/>
+  <parent link="base_uav_1"/>
+  <child link="hop_dieukhien_1"/>
+</joint>
+
+<joint name="Rigid 12" type="fixed">
+  <origin xyz="-0.048083 -0.607791 0.000826" rpy="0 0 0"/>
+  <parent link="base_uav_1"/>
+  <child link="pin_uav_1"/>
+</joint>
+
+<joint name="Rigid 13" type="fixed">
+  <origin xyz="0.0 0.0 0.05" rpy="0 0 0"/>
+  <parent link="hop_dieukhien_1"/>
+  <child link="pin_pi_1"/>
+</joint>
+
+<joint name="Revolute 14" type="continuous">
+  <origin xyz="0.0 0.0 0.0535" rpy="0 0 0"/>
+  <parent link="motor_3_1"/>
+  <child link="quat_3_1"/>
+  <axis xyz="-0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="Revolute 15" type="continuous">
+  <origin xyz="0.0 0.0 0.0535" rpy="0 0 0"/>
+  <parent link="motor_2_1"/>
+  <child link="quat_2_1"/>
+  <axis xyz="0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="Revolute 16" type="continuous">
+  <origin xyz="0.0 0.0 0.0535" rpy="0 0 0"/>
+  <parent link="motor_1_1"/>
+  <child link="quat_1_1"/>
+  <axis xyz="0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="Revolute 17" type="continuous">
+  <origin xyz="0.0 0.0 0.0535" rpy="0 0 0"/>
+  <parent link="motor_4_1"/>
+  <child link="quat_4_1"/>
+  <axis xyz="-0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="Rigid 18" type="fixed">
+  <origin xyz="0.046528 0.032032 0.599199" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="gay_arm_1_1"/>
+</joint>
+
+<joint name="Rigid 19" type="fixed">
+  <origin xyz="0.046528 -0.032032 0.599199" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="gay_arm_2_1"/>
+</joint>
+
+<joint name="Rigid 20" type="fixed">
+  <origin xyz="0.370169 0.159998 -0.054532" rpy="0 0 0"/>
+  <parent link="gay_arm_2_1"/>
+  <child link="camera_1"/>
+</joint>
+
+<joint name="Rigid 21" type="fixed">
+  <origin xyz="0.320526 -0.464124 0.129907" rpy="0 0 0"/>
+  <parent link="FlameWheel_2_1"/>
+  <child link="pin_quat_2_1"/>
+</joint>
+
+<joint name="Rigid 22" type="fixed">
+  <origin xyz="-0.335004 -0.449646 0.129896" rpy="0 0 0"/>
+  <parent link="FlameWheel_3_1"/>
+  <child link="pin_quat_3_1"/>
+</joint>
+
+<joint name="Rigid 23" type="fixed">
+  <origin xyz="0.449635 0.335015 -0.052696" rpy="0 0 0"/>
+  <parent link="FlameWheel_1_1"/>
+  <child link="pin_quat_1_1"/>
+</joint>
+
+<joint name="Rigid 24" type="fixed">
+  <origin xyz="-0.449639 0.335011 -0.052707" rpy="0 0 0"/>
+  <parent link="FlameWheel_4_1"/>
+  <child link="pin_quat_4_1"/>
+</joint>
+
+<joint name="Rigid 25" type="fixed">
+  <origin xyz="-0.048083 -0.607791 0.000826" rpy="0 0 0"/>
+  <parent link="base_uav_1"/>
+  <child link="GPS_1"/>
+</joint>
+
+<joint name="Rigid 26" type="fixed">
+  <origin xyz="-0.463229 -0.159998 0.009532" rpy="0 0 0"/>
+  <parent link="gay_arm_1_1"/>
+  <child link="base_arm_1"/>
+</joint>
+
+<joint name="Rigid 27" type="fixed">
+  <origin xyz="0.392809 0.124074 -0.048282" rpy="0 0 0"/>
+  <parent link="base_arm_1"/>
+  <child link="servo_1_1"/>
+</joint>
+
+<joint name="Revolute 28" type="revolute">
+  <origin xyz="0.013187 0.0039 -0.0192" rpy="0 0 0"/>
+  <parent link="servo_1_1"/>
+  <child link="link_1_1"/>
+  <axis xyz="-0.0 0.0 -1.0"/>
+  <limit upper="3.141593" lower="-3.141593" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Rigid 29" type="fixed">
+  <origin xyz="0.048931 0.007 -0.033724" rpy="0 0 0"/>
+  <parent link="link_1_1"/>
+  <child link="servo_2_1"/>
+</joint>
+
+<joint name="Revolute 30" type="revolute">
+  <origin xyz="-0.027476 0.019208 -0.507525" rpy="0 0 0"/>
+  <parent link="servo_2_1"/>
+  <child link="link_2_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+  <limit upper="1.570796" lower="-1.570796" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Revolute 31" type="revolute">
+  <origin xyz="-0.007211 0.000992 0.348625" rpy="0 0 0"/>
+  <parent link="link_2_1"/>
+  <child link="servo_3_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+  <limit upper="1.570796" lower="-1.570796" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Rigid 32" type="fixed">
+  <origin xyz="0.0039 -0.0192 -0.034687" rpy="0 0 0"/>
+  <parent link="servo_3_1"/>
+  <child link="link_3_1"/>
+</joint>
+
+<joint name="Rigid 33" type="fixed">
+  <origin xyz="-0.03375 -0.0058 -0.042816" rpy="0 0 0"/>
+  <parent link="link_3_1"/>
+  <child link="servo_4_1"/>
+</joint>
+
+<joint name="Revolute 34" type="revolute">
+  <origin xyz="0.0 -0.02045 -0.015" rpy="0 0 0"/>
+  <parent link="servo_4_1"/>
+  <child link="link_4_1"/>
+  <axis xyz="-0.0 0.0 -1.0"/>
+  <limit upper="1.570796" lower="-1.570796" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Rigid 35" type="fixed">
+  <origin xyz="0.0152 0.023 -0.0425" rpy="0 0 0"/>
+  <parent link="link_4_1"/>
+  <child link="servo_5_1"/>
+</joint>
+
+<joint name="Revolute 36" type="revolute">
+  <origin xyz="-0.02045 0.015 0.0" rpy="0 0 0"/>
+  <parent link="servo_5_1"/>
+  <child link="link_5_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+  <limit upper="1.570796" lower="-1.570796" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Rigid 37" type="fixed">
+  <origin xyz="0.0152 -0.0075 -0.075" rpy="0 0 0"/>
+  <parent link="link_5_1"/>
+  <child link="servo_6_1"/>
+</joint>
+
+<joint name="Revolute 38" type="revolute">
+  <origin xyz="-0.02045 -0.015 0.0" rpy="0 0 0"/>
+  <parent link="servo_6_1"/>
+  <child link="hopbut_1"/>
+  <axis xyz="-0.0 -1.0 0.0"/>
+  <limit upper="1.570796" lower="-1.570796" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Rigid 39" type="fixed">
+  <origin xyz="0.0 -0.01225 -0.01" rpy="0 0 0"/>
+  <parent link="hopbut_1"/>
+  <child link="but_1"/>
+</joint>
+
+<joint name="Rigid 41" type="fixed">
+  <origin xyz="0.0 0.0 -0.05" rpy="0 0 0"/>
+  <parent link="but_1"/>
+  <child link="ngoibut_1"/>
+</joint>
+
+</robot>

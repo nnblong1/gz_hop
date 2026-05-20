@@ -1,6 +1,6 @@
 <sdf version='1.11'>
   <model name='x500_hop' canonical_link='base_link'>
-    <pose>0 0 0.85 0 0 0</pose>
+    <pose>0 0 1.15 0 0 0</pose>
     <static>false</static>
     <self_collide>false</self_collide>
     <link name='base_link'>
