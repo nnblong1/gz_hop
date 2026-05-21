@@ -1,0 +1,68 @@
+{
+  "case_name": "manual_qgc",
+  "created_at": "2026-05-21T14:42:24",
+  "output_directory": "/home/wicom/PX4-Autopilot/Tools/simulation/gz/pid_search_results/uam_verification/20260521_144224_manual_qgc",
+  "analysis_phase": "external_enabled_settled",
+  "samples": 11852,
+  "analysis_samples": 5187,
+  "duration_s": 592.5498192310333,
+  "target_alt_m": 2.0,
+  "analysis_settle_after_enable_s": 2.0,
+  "analysis_start_s": 325.52428150177,
+  "analysis_end_s": 584.8238344192505,
+  "analysis_duration_s": 259.29955291748047,
+  "external_enabled_fraction": 0.44110698616267296,
+  "external_enabled_duration_s": 261.34923934936523,
+  "time_first_external_enable_s": 323.47459506988525,
+  "time_last_external_enable_s": 584.8238344192505,
+  "altitude": {
+    "mean_m": 2.874338328298264,
+    "min_m": -1.4529991149902344,
+    "max_m": 3.0640835762023926,
+    "std_m": 0.7094851698286098,
+    "rmse_error_m": 1.1259825569422082
+  },
+  "xy_drift": {
+    "mean_m": 0.24304662576876665,
+    "max_m": 1.089761218873144,
+    "final_m": 0.5946749304859067
+  },
+  "attitude": {
+    "roll_rms_deg": 0.09753154643691934,
+    "pitch_rms_deg": 1.2127995559559075,
+    "roll_abs_max_deg": 0.5363195162001185,
+    "pitch_abs_max_deg": 10.694559410103482,
+    "roll_pitch_abs_max_deg": 10.694559410103482
+  },
+  "velocity": {
+    "vertical_speed_abs_mean_mps": 0.025082007515928453,
+    "vertical_speed_abs_max_mps": 0.6085852980613708
+  },
+  "rate_tracking": {
+    "e_omega_norm_rms_radps": 0.1750177602231144,
+    "e_omega_norm_max_radps": 1.7768290934519984
+  },
+  "external_output": {
+    "torque_norm_rms": 0.08148012622041156,
+    "torque_norm_max": 0.08316939585985912,
+    "n_hat_norm_rms": 0.0036113460196648007,
+    "n_hat_norm_max": 0.018965573417358484
+  },
+  "arm_motion": {
+    "joint_cmd_norm_rms_rad": 0.27354507949514684,
+    "joint_cmd_norm_max_rad": 0.6,
+    "joint_cmd_span_max_rad": 0.6,
+    "joint_pos_norm_rms_rad": 0.1794531136366399,
+    "joint_pos_norm_max_rad": 0.5970900745681872,
+    "joint_pos_span_max_rad": 1.1935647515581203,
+    "arm_command_seen": true,
+    "arm_motion_detected": true
+  },
+  "failure_flags": {
+    "roll_or_pitch_gt_35_deg": false,
+    "altitude_outside_1_to_3m": true,
+    "xy_drift_gt_1m": true,
+    "arm_command_without_motion": false
+  },
+  "verdict": "FAIL"
+}

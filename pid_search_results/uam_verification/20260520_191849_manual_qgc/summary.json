@@ -1,0 +1,68 @@
+{
+  "case_name": "manual_qgc",
+  "created_at": "2026-05-20T19:18:49",
+  "output_directory": "/home/wicom/PX4-Autopilot/Tools/simulation/gz/pid_search_results/uam_verification/20260520_191849_manual_qgc",
+  "analysis_phase": "armed_or_airborne",
+  "samples": 11406,
+  "analysis_samples": 9221,
+  "duration_s": 570.2499496936798,
+  "target_alt_m": 2.0,
+  "analysis_settle_after_enable_s": 2.0,
+  "analysis_start_s": 20.46710181236267,
+  "analysis_end_s": 570.3166992664337,
+  "analysis_duration_s": 549.849597454071,
+  "external_enabled_fraction": 0.0,
+  "external_enabled_duration_s": 0.0,
+  "time_first_external_enable_s": null,
+  "time_last_external_enable_s": null,
+  "altitude": {
+    "mean_m": 0.9922936291630519,
+    "min_m": -1.5759108066558838,
+    "max_m": 4.151690483093262,
+    "std_m": 1.0365446907379816,
+    "rmse_error_m": 1.4456476146428483
+  },
+  "xy_drift": {
+    "mean_m": 9.92869974412285,
+    "max_m": 15.379960796927369,
+    "final_m": 14.36906357140569
+  },
+  "attitude": {
+    "roll_rms_deg": 1.7926914840259438,
+    "pitch_rms_deg": 3.804747421895156,
+    "roll_abs_max_deg": 24.32998133078091,
+    "pitch_abs_max_deg": 35.46917523712436,
+    "roll_pitch_abs_max_deg": 35.46917523712436
+  },
+  "velocity": {
+    "vertical_speed_abs_mean_mps": 0.10547535718131087,
+    "vertical_speed_abs_max_mps": 2.1768863201141357
+  },
+  "rate_tracking": {
+    "e_omega_norm_rms_radps": 0.0,
+    "e_omega_norm_max_radps": 0.0
+  },
+  "external_output": {
+    "torque_norm_rms": null,
+    "torque_norm_max": null,
+    "n_hat_norm_rms": 0.0,
+    "n_hat_norm_max": 0.0
+  },
+  "arm_motion": {
+    "joint_cmd_norm_rms_rad": null,
+    "joint_cmd_norm_max_rad": null,
+    "joint_cmd_span_max_rad": null,
+    "joint_pos_norm_rms_rad": 0.033740626209188156,
+    "joint_pos_norm_max_rad": 0.05335970520286465,
+    "joint_pos_span_max_rad": 0.07876408351495619,
+    "arm_command_seen": false,
+    "arm_motion_detected": true
+  },
+  "failure_flags": {
+    "roll_or_pitch_gt_35_deg": true,
+    "altitude_outside_1_to_3m": true,
+    "xy_drift_gt_1m": true,
+    "arm_command_without_motion": false
+  },
+  "verdict": "FAIL"
+}

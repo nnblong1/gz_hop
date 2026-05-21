@@ -1,0 +1,68 @@
+{
+  "case_name": "manual_qgc",
+  "created_at": "2026-05-20T19:11:55",
+  "output_directory": "/home/wicom/PX4-Autopilot/Tools/simulation/gz/pid_search_results/uam_verification/20260520_191155_manual_qgc",
+  "analysis_phase": "all_samples",
+  "samples": 592,
+  "analysis_samples": 592,
+  "duration_s": 29.550049543380737,
+  "target_alt_m": 2.0,
+  "analysis_settle_after_enable_s": 2.0,
+  "analysis_start_s": 0.06369614601135254,
+  "analysis_end_s": 29.61374568939209,
+  "analysis_duration_s": 29.550049543380737,
+  "external_enabled_fraction": 0.0,
+  "external_enabled_duration_s": 0.0,
+  "time_first_external_enable_s": null,
+  "time_last_external_enable_s": null,
+  "altitude": {
+    "mean_m": null,
+    "min_m": null,
+    "max_m": null,
+    "std_m": null,
+    "rmse_error_m": null
+  },
+  "xy_drift": {
+    "mean_m": null,
+    "max_m": null,
+    "final_m": null
+  },
+  "attitude": {
+    "roll_rms_deg": null,
+    "pitch_rms_deg": null,
+    "roll_abs_max_deg": null,
+    "pitch_abs_max_deg": null,
+    "roll_pitch_abs_max_deg": null
+  },
+  "velocity": {
+    "vertical_speed_abs_mean_mps": null,
+    "vertical_speed_abs_max_mps": null
+  },
+  "rate_tracking": {
+    "e_omega_norm_rms_radps": null,
+    "e_omega_norm_max_radps": null
+  },
+  "external_output": {
+    "torque_norm_rms": null,
+    "torque_norm_max": null,
+    "n_hat_norm_rms": null,
+    "n_hat_norm_max": null
+  },
+  "arm_motion": {
+    "joint_cmd_norm_rms_rad": null,
+    "joint_cmd_norm_max_rad": null,
+    "joint_cmd_span_max_rad": null,
+    "joint_pos_norm_rms_rad": null,
+    "joint_pos_norm_max_rad": null,
+    "joint_pos_span_max_rad": null,
+    "arm_command_seen": false,
+    "arm_motion_detected": false
+  },
+  "failure_flags": {
+    "roll_or_pitch_gt_35_deg": false,
+    "altitude_outside_1_to_3m": false,
+    "xy_drift_gt_1m": false,
+    "arm_command_without_motion": false
+  },
+  "verdict": "PASS_CANDIDATE"
+}

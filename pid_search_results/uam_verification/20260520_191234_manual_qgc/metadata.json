@@ -1,0 +1,33 @@
+{
+  "case_name": "manual_qgc",
+  "created_at": "2026-05-20T19:12:34",
+  "output_directory": "/home/wicom/PX4-Autopilot/Tools/simulation/gz/pid_search_results/uam_verification/20260520_191234_manual_qgc",
+  "target_alt_m": 2.0,
+  "log_rate_hz": 20.0,
+  "analysis_settle_after_enable_s": 2.0,
+  "notes": "",
+  "files": {
+    "timeseries_csv": "/home/wicom/PX4-Autopilot/Tools/simulation/gz/pid_search_results/uam_verification/20260520_191234_manual_qgc/flight_timeseries.csv",
+    "summary_json": "/home/wicom/PX4-Autopilot/Tools/simulation/gz/pid_search_results/uam_verification/20260520_191234_manual_qgc/summary.json",
+    "summary_markdown": "/home/wicom/PX4-Autopilot/Tools/simulation/gz/pid_search_results/uam_verification/20260520_191234_manual_qgc/summary.md"
+  },
+  "topics": {
+    "odometry": "/fmu/out/vehicle_odometry",
+    "rates_setpoint": "/fmu/out/vehicle_rates_setpoint",
+    "torque_setpoint": "/fmu/in/vehicle_torque_setpoint",
+    "thrust_setpoint": "/fmu/in/vehicle_thrust_setpoint",
+    "controller_enable": "/uam/controller_enable",
+    "debug_state": "/uam/debug_state",
+    "joint_states": "/joint_states",
+    "arm_command": "/arm_controller/joint_trajectory_plan",
+    "land_detected": "/fmu/out/vehicle_land_detected",
+    "vehicle_status": "/fmu/out/vehicle_status_v1"
+  },
+  "debug_state_layout": {
+    "0_2": "omega body rates",
+    "3_5": "omega_des desired body rates",
+    "6_8": "e_omega rate error",
+    "9_11": "n_hat RBFNN compensation estimate",
+    "12_14": "tau commanded normalized torque"
+  }
+}

@@ -1,0 +1,1791 @@
+<sdf version='1.11'>
+  <model name='x500_hop' canonical_link='base_link'>
+    <pose>0 0 0.85 0 0 0</pose>
+    <static>false</static>
+    <self_collide>false</self_collide>
+    <link name='base_link'>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>2.6053033236148976e-09 0.00032839666072493874 0.6000000098794288 0 0 0</pose>
+        <mass>0.040941821553539655</mass>
+        <inertia>
+          <ixx>3.2000001000000001e-05</ixx>
+          <ixy>-0</ixy>
+          <ixz>-0</ixz>
+          <iyy>8.8000000999999994e-05</iyy>
+          <iyz>-0</iyz>
+          <izz>0.00011988000099999998</izz>
+        </inertia>
+      </inertial>
+      <visual name='base_link_visual_0'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/base_link.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+      <collision name='simple_takeoff_collision'>
+        <pose>0 0 0.60 0 0 0</pose>
+        <geometry>
+          <box><size>0.32 0.32 0.04</size></box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>100000</kp>
+              <kd>1</kd>
+              <max_vel>0.1</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+          <friction><ode><mu>0.6</mu><mu2>0.6</mu2></ode></friction>
+        </surface>
+      </collision>
+
+      <sensor name="air_pressure_sensor" type="air_pressure">
+        <always_on>1</always_on>
+        <update_rate>50</update_rate>
+        <air_pressure>
+          <pressure>
+            <noise type="gaussian">
+              <mean>0</mean>
+              <stddev>3</stddev>
+            </noise>
+          </pressure>
+        </air_pressure>
+      </sensor>
+      <sensor name="magnetometer_sensor" type="magnetometer">
+        <always_on>1</always_on>
+        <update_rate>100</update_rate>
+        <magnetometer>
+          <x><noise type="gaussian"><stddev>0.0001</stddev></noise></x>
+          <y><noise type="gaussian"><stddev>0.0001</stddev></noise></y>
+          <z><noise type="gaussian"><stddev>0.0001</stddev></noise></z>
+        </magnetometer>
+      </sensor>
+      <sensor name="imu_sensor" type="imu">
+        <always_on>1</always_on>
+        <update_rate>250</update_rate>
+        <imu>
+          <angular_velocity>
+            <x><noise type="gaussian"><mean>0.0</mean><stddev>0.0008726646</stddev></noise></x>
+            <y><noise type="gaussian"><mean>0.0</mean><stddev>0.0008726646</stddev></noise></y>
+            <z><noise type="gaussian"><mean>0.0</mean><stddev>0.0008726646</stddev></noise></z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x><noise type="gaussian"><mean>0.0</mean><stddev>0.00637</stddev></noise></x>
+            <y><noise type="gaussian"><mean>0.0</mean><stddev>0.00637</stddev></noise></y>
+            <z><noise type="gaussian"><mean>0.0</mean><stddev>0.00686</stddev></noise></z>
+          </linear_acceleration>
+        </imu>
+      </sensor>
+      <sensor name="navsat_sensor" type="navsat">
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+      </sensor>
+    </link>
+    <joint name='Rigid_1' type='fixed'>
+      <pose relative_to='base_link'>-0.032032 -0.046528 0.600801 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>FlameWheel_1_1</child>
+    </joint>
+    <link name='FlameWheel_1_1'>
+      <pose relative_to='Rigid_1'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-0.06258117664329169 -0.04808716504955769 0.027719245518458946 0 0 0</pose>
+        <mass>0.051801357008754989</mass>
+        <inertia>
+          <ixx>0.00012900000099999999</ixx>
+          <ixy>-0.00011900000000000001</ixy>
+          <ixz>-1.9999999999999999e-06</ixz>
+          <iyy>0.00012900000099999999</iyy>
+          <iyz>-1.9999999999999999e-06</iyz>
+          <izz>0.00024600000100000001</izz>
+        </inertia>
+      </inertial>
+      <visual name='FlameWheel_1_1_visual_0'>
+        <pose>0.032032 0.046528 -0.600801 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/FlameWheel_1_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_9' type='fixed'>
+      <pose relative_to='FlameWheel_1_1'>-0.12688 -0.112373 0.03705 0 0 0</pose>
+      <parent>FlameWheel_1_1</parent>
+      <child>motor_1_1</child>
+    </joint>
+    <link name='motor_1_1'>
+      <pose relative_to='Rigid_9'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>1.9600295324273542e-06 -3.745146665901089e-06 0.016548289023201934 0 0 0</pose>
+        <mass>0.050024781404252268</mass>
+        <inertia>
+          <ixx>1.0000001e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>-0</ixz>
+          <iyy>1.0000001e-05</iyy>
+          <iyz>0</iyz>
+          <izz>5.0000010000000006e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='motor_1_1_visual_0'>
+        <pose>0.158912 0.158901 -0.637851 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/motor_1_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Revolute_16' type='revolute'>
+      <pose relative_to='base_link'>-0.158912 -0.15890099999999999 0.69135100000000005 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>quat_1_1</child>
+      <axis>
+        <xyz>0.0 -0.0 1.0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='quat_1_1'>
+      <pose relative_to='Revolute_16'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>3.4640321444623368e-09 -8.607751988964907e-08 -0.006172847917406243 0 0 0</pose>
+        <mass>0.010003421848674698</mass>
+        <inertia>
+          <ixx>1.000001e-06</ixx>
+          <ixy>-5.0000000000000004e-06</ixy>
+          <ixz>-0</ixz>
+          <iyy>4.6000001000000003e-05</iyy>
+          <iyz>-0</iyz>
+          <izz>4.6953000999999999e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name='quat_1_1_visual_0'>
+        <pose>0.158912 0.158901 -0.691351 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/quat_1_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_23' type='fixed'>
+      <pose relative_to='FlameWheel_1_1'>0.449635 0.335015 -0.052696 0 0 0</pose>
+      <parent>FlameWheel_1_1</parent>
+      <child>pin_quat_1_1</child>
+    </joint>
+    <link name='pin_quat_1_1'>
+      <pose relative_to='Rigid_23'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-0.5089099727351325 -0.37978328243848314 0.09284600000000087 0 0 0</pose>
+        <mass>0.02499875</mass>
+        <inertia>
+          <ixx>2.0000009999999997e-06</ixx>
+          <ixy>-9.9999999999999995e-07</ixy>
+          <ixz>0</ixz>
+          <iyy>2.0000009999999997e-06</iyy>
+          <iyz>0</iyz>
+          <izz>3.9960009999999998e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='pin_quat_1_1_visual_0'>
+        <pose>-0.417603 -0.288487 -0.548105 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/pin_quat_1_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_3' type='fixed'>
+      <pose relative_to='base_link'>0.046528 0.032032 0.600801 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>FlameWheel_3_1</child>
+    </joint>
+    <link name='FlameWheel_3_1'>
+      <pose relative_to='Rigid_3'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>0.048085176643291525 0.06258316504955241 0.027719245518459168 0 0 0</pose>
+        <mass>0.051801357008754989</mass>
+        <inertia>
+          <ixx>0.00012900000099999999</ixx>
+          <ixy>-0.00011900000000000001</ixy>
+          <ixz>1.9999999999999999e-06</ixz>
+          <iyy>0.00012900000099999999</iyy>
+          <iyz>1.9999999999999999e-06</iyz>
+          <izz>0.00024600000100000001</izz>
+        </inertia>
+      </inertial>
+      <visual name='FlameWheel_3_1_visual_0'>
+        <pose>-0.046528 -0.032032 -0.600801 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/FlameWheel_3_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_7' type='fixed'>
+      <pose relative_to='FlameWheel_3_1'>0.112384 0.126869 0.03705 0 0 0</pose>
+      <parent>FlameWheel_3_1</parent>
+      <child>motor_3_1</child>
+    </joint>
+    <link name='motor_3_1'>
+      <pose relative_to='Rigid_7'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-3.924456180859348e-06 -1.6503261869860175e-06 0.016548289023201934 0 0 0</pose>
+        <mass>0.050024781404252275</mass>
+        <inertia>
+          <ixx>1.0000001e-05</ixx>
+          <ixy>-0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.0000001e-05</iyy>
+          <iyz>0</iyz>
+          <izz>5.0000010000000006e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='motor_3_1_visual_0'>
+        <pose>-0.158912 -0.158901 -0.637851 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/motor_3_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Revolute_14' type='revolute'>
+      <pose relative_to='base_link'>0.158912 0.15890099999999999 0.69135100000000005 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>quat_3_1</child>
+      <axis>
+        <xyz>-0.0 -0.0 1.0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='quat_3_1'>
+      <pose relative_to='Revolute_14'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-4.377777995667742e-07 2.107428410946799e-07 -0.006172847917406243 0 0 0</pose>
+        <mass>0.010003421848674698</mass>
+        <inertia>
+          <ixx>1.6000000999999999e-05</ixx>
+          <ixy>2.1999999999999999e-05</ixy>
+          <ixz>-0</ixz>
+          <iyy>3.1000001000000004e-05</iyy>
+          <iyz>0</iyz>
+          <izz>4.7000001e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name='quat_3_1_visual_0'>
+        <pose>-0.158912 -0.158901 -0.691351 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/quat_3_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_22' type='fixed'>
+      <pose relative_to='FlameWheel_3_1'>-0.335004 -0.449646 0.129896 0 0 0</pose>
+      <parent>FlameWheel_3_1</parent>
+      <child>pin_quat_3_1</child>
+    </joint>
+    <link name='pin_quat_3_1'>
+      <pose relative_to='Rigid_22'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>0.3797829727351323 0.5089102824384779 -0.08974599999999922 0 0 0</pose>
+        <mass>0.02499875</mass>
+        <inertia>
+          <ixx>2.0000009999999997e-06</ixx>
+          <ixy>-9.9999999999999995e-07</ixy>
+          <ixz>-0</ixz>
+          <iyy>2.0000009999999997e-06</iyy>
+          <iyz>-0</iyz>
+          <izz>3.9960009999999998e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='pin_quat_3_1_visual_0'>
+        <pose>0.288476 0.417614 -0.730697 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/pin_quat_3_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_4' type='fixed'>
+      <pose relative_to='base_link'>-0.032032 0.046528 0.600801 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>FlameWheel_2_1</child>
+    </joint>
+    <link name='FlameWheel_2_1'>
+      <pose relative_to='Rigid_4'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-0.06258316504955502 0.048085176643290956 0.027719245518459168 0 0 0</pose>
+        <mass>0.051801357008754989</mass>
+        <inertia>
+          <ixx>0.00012900000099999999</ixx>
+          <ixy>0.00011900000000000001</ixy>
+          <ixz>-1.9999999999999999e-06</ixz>
+          <iyy>0.00012900000099999999</iyy>
+          <iyz>1.9999999999999999e-06</iyz>
+          <izz>0.00024600000100000001</izz>
+        </inertia>
+      </inertial>
+      <visual name='FlameWheel_2_1_visual_0'>
+        <pose>0.032032 -0.046528 -0.600801 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/FlameWheel_2_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_8' type='fixed'>
+      <pose relative_to='FlameWheel_2_1'>-0.126869 0.112384 0.03705 0 0 0</pose>
+      <parent>FlameWheel_2_1</parent>
+      <child>motor_2_1</child>
+    </joint>
+    <link name='motor_2_1'>
+      <pose relative_to='Rigid_8'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>1.650326184404749e-06 -3.924456181497726e-06 0.016548289023202045 0 0 0</pose>
+        <mass>0.050024781404252268</mass>
+        <inertia>
+          <ixx>1.0000001e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>-0</ixz>
+          <iyy>1.0000001e-05</iyy>
+          <iyz>0</iyz>
+          <izz>5.0000010000000006e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='motor_2_1_visual_0'>
+        <pose>0.158901 -0.158912 -0.637851 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/motor_2_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Revolute_15' type='revolute'>
+      <pose relative_to='base_link'>-0.15890099999999999 0.158912 0.69135100000000005 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>quat_2_1</child>
+      <axis>
+        <xyz>0.0 -0.0 1.0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='quat_2_1'>
+      <pose relative_to='Revolute_15'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-6.334943444818997e-08 -4.864444943519786e-07 -0.006172847917406132 0 0 0</pose>
+        <mass>0.010003421848674698</mass>
+        <inertia>
+          <ixx>4.5910044001000007e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>4.5955000000000003e-06</iyy>
+          <iyz>0</iyz>
+          <izz>4.5955000000000003e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name='quat_2_1_visual_0'>
+        <pose>0.158901 -0.158912 -0.691351 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/quat_2_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_21' type='fixed'>
+      <pose relative_to='FlameWheel_2_1'>0.320526 -0.464124 0.129907 0 0 0</pose>
+      <parent>FlameWheel_2_1</parent>
+      <child>pin_quat_2_1</child>
+    </joint>
+    <link name='pin_quat_2_1'>
+      <pose relative_to='Rigid_21'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-0.37979028243848045 0.5089029727351317 -0.08975699999999898 0 0 0</pose>
+        <mass>0.02499875</mass>
+        <inertia>
+          <ixx>2.0000009999999997e-06</ixx>
+          <ixy>9.9999999999999995e-07</ixy>
+          <ixz>-0</ixz>
+          <iyy>2.0000009999999997e-06</iyy>
+          <iyz>0</iyz>
+          <izz>3.9960009999999998e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='pin_quat_2_1_visual_0'>
+        <pose>-0.288494 0.417596 -0.730708 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/pin_quat_2_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_5' type='fixed'>
+      <pose relative_to='base_link'>0.032032 -0.046528 0.600801 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>FlameWheel_4_1</child>
+    </joint>
+    <link name='FlameWheel_4_1'>
+      <pose relative_to='Rigid_5'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>0.06258316504955314 -0.04808517664329423 0.027719245518458946 0 0 0</pose>
+        <mass>0.051801357008754989</mass>
+        <inertia>
+          <ixx>0.00012900000099999999</ixx>
+          <ixy>0.00011900000000000001</ixy>
+          <ixz>1.9999999999999999e-06</ixz>
+          <iyy>0.00012900000099999999</iyy>
+          <iyz>-1.9999999999999999e-06</iyz>
+          <izz>0.00024600000100000001</izz>
+        </inertia>
+      </inertial>
+      <visual name='FlameWheel_4_1_visual_0'>
+        <pose>-0.032032 0.046528 -0.600801 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/FlameWheel_4_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_6' type='fixed'>
+      <pose relative_to='FlameWheel_4_1'>0.016051 0.015062 0.036805 0 0 0</pose>
+      <parent>FlameWheel_4_1</parent>
+      <child>base_uav_1</child>
+    </joint>
+    <link name='base_uav_1'>
+      <pose relative_to='Rigid_6'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-0.048082970130653595 0.03146642943763587 0.0008261222063312701 0 0 0</pose>
+        <mass>0.022928667761253782</mass>
+        <inertia>
+          <ixx>2.1000000999999998e-05</ixx>
+          <ixy>-0</ixy>
+          <ixz>0</ixz>
+          <iyy>2.0000001000000001e-05</iyy>
+          <iyz>-0</iyz>
+          <izz>4.0959001000000001e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name='base_uav_1_visual_0'>
+        <pose>-0.048083 0.031466 -0.637606 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/base_uav_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_11' type='fixed'>
+      <pose relative_to='base_uav_1'>-0.048083 0.031466 0.001651 0 0 0</pose>
+      <parent>base_uav_1</parent>
+      <child>hop_dieukhien_1</child>
+    </joint>
+    <link name='hop_dieukhien_1'>
+      <pose relative_to='Rigid_11'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-1.900701818158268e-15 -2.698050627836599e-15 0.025000114186135902 0 0 0</pose>
+        <mass>0.65000000000000013</mass>
+        <inertia>
+          <ixx>0.00067700000099999997</ixx>
+          <ixy>0</ixy>
+          <ixz>-0</ixz>
+          <iyy>0.00067700000099999997</iyy>
+          <iyz>-0</iyz>
+          <izz>0.001083000001</izz>
+        </inertia>
+      </inertial>
+      <visual name='hop_dieukhien_1_visual_0'>
+        <pose>0.0 0.0 -0.639257 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/hop_dieukhien_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_13' type='fixed'>
+      <pose relative_to='hop_dieukhien_1'>0.0 0.0 0.05 0 0 0</pose>
+      <parent>hop_dieukhien_1</parent>
+      <child>pin_pi_1</child>
+    </joint>
+    <link name='pin_pi_1'>
+      <pose relative_to='Rigid_13'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-1.9007018181582677e-15 -2.719491298819321e-15 0.013500114186135947 0 0 0</pose>
+        <mass>0.17999954761860618</mass>
+        <inertia>
+          <ixx>5.7000001000000006e-05</ixx>
+          <ixy>-0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000101000001</iyy>
+          <iyz>-0</iyz>
+          <izz>0.00013800000099999999</izz>
+        </inertia>
+      </inertial>
+      <visual name='pin_pi_1_visual_0'>
+        <pose>0.0 0.0 -0.689257 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/pin_pi_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_12' type='fixed'>
+      <pose relative_to='base_uav_1'>-0.048083 -0.607791 0.000826 0 0 0</pose>
+      <parent>base_uav_1</parent>
+      <child>pin_uav_1</child>
+    </joint>
+    <link name='pin_uav_1'>
+      <pose relative_to='Rigid_12'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-1.896260926059767e-15 0.6392569999999973 -0.024674885813864122 0 0 0</pose>
+        <mass>0.35217000000000004</mass>
+        <inertia>
+          <ixx>7.4000000999999992e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>-0</ixz>
+          <iyy>0.00068000000100000004</iyy>
+          <iyz>-0</iyz>
+          <izz>0.00071500000100000003</izz>
+        </inertia>
+      </inertial>
+      <visual name='pin_uav_1_visual_0'>
+        <pose>0.0 0.639257 -0.638432 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/pin_uav_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_25' type='fixed'>
+      <pose relative_to='base_uav_1'>-0.048083 -0.607791 0.000826 0 0 0</pose>
+      <parent>base_uav_1</parent>
+      <child>GPS_1</child>
+    </joint>
+    <link name='GPS_1'>
+      <pose relative_to='Rigid_25'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>0.07999999999982547 0.6392569999999973 0.06573724971827521 0 0 0</pose>
+        <mass>0.050024716398642581</mass>
+        <inertia>
+          <ixx>4.7000001e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>-0</ixz>
+          <iyy>4.7000001e-05</iyy>
+          <iyz>0</iyz>
+          <izz>1.1000000999999999e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name='GPS_1_visual_0'>
+        <pose>0.0 0.639257 -0.638432 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/GPS_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_10' type='fixed'>
+      <pose relative_to='FlameWheel_4_1'>0.126869 -0.112384 0.03705 0 0 0</pose>
+      <parent>FlameWheel_4_1</parent>
+      <child>motor_4_1</child>
+    </joint>
+    <link name='motor_4_1'>
+      <pose relative_to='Rigid_10'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>1.7807200131114698e-06 -3.435443317656439e-06 0.016548289023201823 0 0 0</pose>
+        <mass>0.050024781404252268</mass>
+        <inertia>
+          <ixx>1.0000001e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>-0</ixz>
+          <iyy>1.0000001e-05</iyy>
+          <iyz>0</iyz>
+          <izz>5.0000010000000006e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='motor_4_1_visual_0'>
+        <pose>-0.158901 0.158912 -0.637851 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/motor_4_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Revolute_17' type='revolute'>
+      <pose relative_to='base_link'>0.15890099999999999 -0.158912 0.69135100000000005 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>quat_4_1</child>
+      <axis>
+        <xyz>-0.0 -0.0 1.0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='quat_4_1'>
+      <pose relative_to='Revolute_17'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-1.7584548714366655e-07 2.236258283272452e-07 -0.0061728479174065765 0 0 0</pose>
+        <mass>0.010003421848674698</mass>
+        <inertia>
+          <ixx>1.000001e-06</ixx>
+          <ixy>-5.0000000000000004e-06</ixy>
+          <ixz>-0</ixz>
+          <iyy>4.6000001000000003e-05</iyy>
+          <iyz>-0</iyz>
+          <izz>4.6953000999999999e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name='quat_4_1_visual_0'>
+        <pose>-0.158901 0.158912 -0.691351 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/quat_4_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_24' type='fixed'>
+      <pose relative_to='FlameWheel_4_1'>-0.449639 0.335011 -0.052707 0 0 0</pose>
+      <parent>FlameWheel_4_1</parent>
+      <child>pin_quat_4_1</child>
+    </joint>
+    <link name='pin_quat_4_1'>
+      <pose relative_to='Rigid_24'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>0.5089032824384786 -0.379789972735135 0.09285700000000086 0 0 0</pose>
+        <mass>0.02499875</mass>
+        <inertia>
+          <ixx>2.0000009999999997e-06</ixx>
+          <ixy>9.9999999999999995e-07</ixy>
+          <ixz>0</ixz>
+          <iyy>2.0000009999999997e-06</iyy>
+          <iyz>0</iyz>
+          <izz>3.9960009999999998e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='pin_quat_4_1_visual_0'>
+        <pose>0.417607 -0.288483 -0.548094 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/pin_quat_4_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_18' type='fixed'>
+      <pose relative_to='base_link'>0.046528 0.032032 0.599199 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>gay_arm_1_1</child>
+    </joint>
+    <link name='gay_arm_1_1'>
+      <pose relative_to='Rigid_18'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-0.0465303737979253 -6.281224837478838e-08 -0.022160368895670857 0 0 0</pose>
+        <mass>0.021002942230888496</mass>
+        <inertia>
+          <ixx>1.0010000000000002e-09</ixx>
+          <ixy>-0</ixy>
+          <ixz>-0</ixz>
+          <iyy>0.00017500000099999999</iyy>
+          <iyz>-0</iyz>
+          <izz>0.00017500000099999999</izz>
+        </inertia>
+      </inertial>
+      <visual name='gay_arm_1_1_visual_0'>
+        <pose>-0.046528 -0.032032 -0.599199 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/gay_arm_1_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_26' type='fixed'>
+      <pose relative_to='gay_arm_1_1'>-0.463229 -0.159998 0.009532 0 0 0</pose>
+      <parent>gay_arm_1_1</parent>
+      <child>base_arm_1</child>
+    </joint>
+    <link name='base_arm_1'>
+      <pose relative_to='Rigid_26'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>0.4167443033603202 0.12797121369038308 -0.04149401858366086 0 0 0</pose>
+        <mass>0.023845007960110159</mass>
+        <inertia>
+          <ixx>1.6000000999999999e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.0000001e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2.5000001000000001e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name='base_arm_1_visual_0'>
+        <pose>0.416701 0.127966 -0.608731 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/base_arm_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_27' type='fixed'>
+      <pose relative_to='base_arm_1'>0.392809 0.124074 -0.048282 0 0 0</pose>
+      <parent>base_arm_1</parent>
+      <child>servo_1_1</child>
+    </joint>
+    <link name='servo_1_1'>
+      <pose relative_to='Rigid_27'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>0.023710762122076904 0.003899937316566216 0.007047451607639421 0 0 0</pose>
+        <mass>0.072325950787472171</mass>
+        <inertia>
+          <ixx>1.2000001e-05</ixx>
+          <ixy>-0</ixy>
+          <ixz>-0</ixz>
+          <iyy>1.9000001e-05</iyy>
+          <iyz>-0</iyz>
+          <izz>1.2000001e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name='servo_1_1_visual_0'>
+        <pose>0.023892 0.003892 -0.560449 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/servo_1_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Revolute_20' type='revolute'>
+      <pose relative_to='servo_1_1'>0.013187 0.0039 -0.0192 0 0 0</pose>
+      <parent>servo_1_1</parent>
+      <child>link_1_1</child>
+      <axis>
+        <xyz>-0.0 0.0 -1.0</xyz>
+        <limit>
+          <lower>-3.141593</lower>
+          <upper>3.141593</upper>
+          <effort>100</effort>
+          <velocity>100</velocity>
+        </limit>
+        <dynamics>
+          <damping>5.0</damping>
+          <friction>0.5</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link_1_1'>
+      <pose relative_to='Revolute_20'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>0.011220493117939531 -0.0030974761031022464 -0.015638420213961446 0 0 0</pose>
+        <mass>0.032073463683186837</mass>
+        <inertia>
+          <ixx>1.0000001e-05</ixx>
+          <ixy>9.9999999999999995e-07</ixy>
+          <ixz>3.9999999999999998e-06</ixz>
+          <iyy>1.6000000999999999e-05</iyy>
+          <iyz>-9.9999999999999995e-07</iyz>
+          <izz>1.7000000999999999e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name='link_1_1_visual_0'>
+        <pose>0.010705 -8e-06 -0.541249 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/link_1_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_29' type='fixed'>
+      <pose relative_to='link_1_1'>0.048931 0.007 -0.033724 0 0 0</pose>
+      <parent>link_1_1</parent>
+      <child>servo_2_1</child>
+    </joint>
+    <link name='servo_2_1'>
+      <pose relative_to='Rigid_29'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-0.02416319664567411 -0.007047509654397052 -0.0038997379987668612 0 0 0</pose>
+        <mass>0.072325950787472171</mass>
+        <inertia>
+          <ixx>1.2000001e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>-0</ixz>
+          <iyy>1.2000001e-05</iyy>
+          <iyz>0</iyz>
+          <izz>1.9000001e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name='servo_2_1_visual_0'>
+        <pose>-0.038226 -0.007008 -0.507525 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/servo_2_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Revolute_22' type='revolute'>
+      <pose relative_to='servo_2_1'>-0.027476 0.019208 -0.507525 0 0 0</pose>
+      <parent>servo_2_1</parent>
+      <child>link_2_1</child>
+      <axis>
+        <xyz>0.0 1.0 0.0</xyz>
+        <limit>
+          <lower>-1.570796</lower>
+          <upper>1.570796</upper>
+          <effort>100</effort>
+          <velocity>100</velocity>
+        </limit>
+        <dynamics>
+          <damping>5.0</damping>
+          <friction>0.5</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link_2_1'>
+      <pose relative_to='Revolute_22'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-0.007210969414248912 -0.0197847895705189 0.43799621035557323 0 0 0</pose>
+        <mass>0.081543930138788592</mass>
+        <inertia>
+          <ixx>0.000155000001</ixx>
+          <ixy>-0</ixy>
+          <ixz>-0</ixz>
+          <iyy>0.00012800000099999999</iyy>
+          <iyz>2.5999999999999998e-05</iyz>
+          <izz>6.7000000999999998e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name='link_2_1_visual_0'>
+        <pose>-0.01075 -0.026216 0.0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/link_2_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Revolute_23' type='revolute'>
+      <pose relative_to='link_2_1'>-0.007211 0.000992 0.348625 0 0 0</pose>
+      <parent>link_2_1</parent>
+      <child>servo_3_1</child>
+      <axis>
+        <xyz>0.0 1.0 0.0</xyz>
+        <limit>
+          <lower>-1.570796</lower>
+          <upper>1.570796</upper>
+          <effort>100</effort>
+          <velocity>100</velocity>
+        </limit>
+        <dynamics>
+          <damping>5.0</damping>
+          <friction>0.5</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='servo_3_1'>
+      <pose relative_to='Revolute_23'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>2.9579888136989363e-08 -0.026247509654396938 -0.010523502350837544 0 0 0</pose>
+        <mass>0.061075247331643157</mass>
+        <inertia>
+          <ixx>1.6000000999999999e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.0000001e-05</iyy>
+          <iyz>-0</iyz>
+          <izz>1.0000001e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name='servo_3_1_visual_0'>
+        <pose>-0.003539 -0.027208 -0.348625 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/servo_3_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_32' type='fixed'>
+      <pose relative_to='servo_3_1'>0.0039 -0.0192 -0.034687 0 0 0</pose>
+      <parent>servo_3_1</parent>
+      <child>link_3_1</child>
+    </joint>
+    <link name='link_3_1'>
+      <pose relative_to='Rigid_32'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-0.023948964956288153 -0.02356078317377698 0.008245853923793456 0 0 0</pose>
+        <mass>0.04211261488564385</mass>
+        <inertia>
+          <ixx>3.1000001000000004e-05</ixx>
+          <ixy>9.9999999999999995e-07</ixy>
+          <ixz>-6.9999999999999999e-06</ixz>
+          <iyy>3.4000001000000003e-05</iyy>
+          <iyz>9.9999999999999995e-07</iyz>
+          <izz>1.7000000999999999e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name='link_3_1_visual_0'>
+        <pose>-0.007439 -0.008008 -0.313938 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/link_3_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_33' type='fixed'>
+      <pose relative_to='link_3_1'>-0.03375 -0.0058 -0.042816 0 0 0</pose>
+      <parent>link_3_1</parent>
+      <child>servo_4_1</child>
+    </joint>
+    <link name='servo_4_1'>
+      <pose relative_to='Rigid_33'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>3.429106741614785e-08 -0.015504730000590472 0.002772764093444957 0 0 0</pose>
+        <mass>0.023764535428915497</mass>
+        <inertia>
+          <ixx>2.9970010000000001e-06</ixx>
+          <ixy>-0</ixy>
+          <ixz>-0</ixz>
+          <iyy>2.0000009999999997e-06</iyy>
+          <iyz>-0</iyz>
+          <izz>1.000001e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='servo_4_1_visual_0'>
+        <pose>0.026311 -0.002208 -0.271122 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/servo_4_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Revolute_26' type='revolute'>
+      <pose relative_to='servo_4_1'>0.0 -0.02045 -0.015 0 0 0</pose>
+      <parent>servo_4_1</parent>
+      <child>link_4_1</child>
+      <axis>
+        <xyz>-0.0 0.0 -1.0</xyz>
+        <limit>
+          <lower>-1.570796</lower>
+          <upper>1.570796</upper>
+          <effort>100</effort>
+          <velocity>100</velocity>
+        </limit>
+        <dynamics>
+          <damping>5.0</damping>
+          <friction>0.5</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link_4_1'>
+      <pose relative_to='Revolute_26'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>7.192355496236924e-05 0.0008718452459813945 -0.023911713461690076 0 0 0</pose>
+        <mass>0.015631200996358827</mass>
+        <inertia>
+          <ixx>5.0000010000000006e-06</ixx>
+          <ixy>-0</ixy>
+          <ixz>0</ixz>
+          <iyy>5.0000010000000006e-06</iyy>
+          <iyz>0</iyz>
+          <izz>3.0000009999999999e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='link_4_1_visual_0'>
+        <pose>0.026311 0.018242 -0.256122 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/link_4_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_35' type='fixed'>
+      <pose relative_to='link_4_1'>0.0152 0.023 -0.0425 0 0 0</pose>
+      <parent>link_4_1</parent>
+      <child>servo_5_1</child>
+    </joint>
+    <link name='servo_5_1'>
+      <pose relative_to='Rigid_35'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-0.015504638416272518 -0.002772603076066449 2.1898963067923383e-07 0 0 0</pose>
+        <mass>0.023764535428915497</mass>
+        <inertia>
+          <ixx>2.0000009999999997e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.000001e-06</iyy>
+          <iyz>-0</iyz>
+          <izz>2.9970010000000001e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='servo_5_1_visual_0'>
+        <pose>0.011111 -0.004758 -0.213622 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/servo_5_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Revolute_28' type='revolute'>
+      <pose relative_to='servo_5_1'>-0.02045 0.015 0.0 0 0 0</pose>
+      <parent>servo_5_1</parent>
+      <child>link_5_1</child>
+      <axis>
+        <xyz>0.0 1.0 0.0</xyz>
+        <limit>
+          <lower>-1.570796</lower>
+          <upper>1.570796</upper>
+          <effort>100</effort>
+          <velocity>100</velocity>
+        </limit>
+        <dynamics>
+          <damping>5.0</damping>
+          <friction>0.5</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link_5_1'>
+      <pose relative_to='Revolute_28'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>6.410358945283662e-05 0.01260581899217313 -0.03856129254243296 0 0 0</pose>
+        <mass>0.031034602762987303</mass>
+        <inertia>
+          <ixx>3.8000001000000005e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.8000001000000005e-05</iyy>
+          <iyz>-0</iyz>
+          <izz>5.0000010000000006e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='link_5_1_visual_0'>
+        <pose>0.031561 -0.019758 -0.213622 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/link_5_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_37' type='fixed'>
+      <pose relative_to='link_5_1'>0.0152 -0.0075 -0.075 0 0 0</pose>
+      <parent>link_5_1</parent>
+      <child>servo_6_1</child>
+    </joint>
+    <link name='servo_6_1'>
+      <pose relative_to='Rigid_37'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-0.01550463841627462 0.0027724871315622287 2.1787204354528633e-07 0 0 0</pose>
+        <mass>0.023764535428915497</mass>
+        <inertia>
+          <ixx>2.0000009999999997e-06</ixx>
+          <ixy>-0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.000001e-06</iyy>
+          <iyz>0</iyz>
+          <izz>2.9970010000000001e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='servo_6_1_visual_0'>
+        <pose>0.016361 -0.012258 -0.138622 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/servo_6_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Revolute_30' type='revolute'>
+      <pose relative_to='servo_6_1'>-0.02045 -0.015 0.0 0 0 0</pose>
+      <parent>servo_6_1</parent>
+      <child>hopbut_1</child>
+      <axis>
+        <xyz>-0.0 -1.0 0.0</xyz>
+        <limit>
+          <lower>-1.570796</lower>
+          <upper>1.570796</upper>
+          <effort>100</effort>
+          <velocity>100</velocity>
+        </limit>
+        <dynamics>
+          <damping>5.0</damping>
+          <friction>0.5</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='hopbut_1'>
+      <pose relative_to='Revolute_30'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>1.4881337144279083e-05 -0.009899860319811944 2.1784866890972587e-07 0 0 0</pose>
+        <mass>0.01013794554176892</mass>
+        <inertia>
+          <ixx>1.000001e-06</ixx>
+          <ixy>-0</ixy>
+          <ixz>-0</ixz>
+          <iyy>1.000001e-06</iyy>
+          <iyz>0</iyz>
+          <izz>1.000001e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='hopbut_1_visual_0'>
+        <pose>0.036811 0.002742 -0.138622 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/hopbut_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_39' type='fixed'>
+      <pose relative_to='hopbut_1'>0.0 -0.01225 -0.01 0 0 0</pose>
+      <parent>hopbut_1</parent>
+      <child>but_1</child>
+    </joint>
+    <link name='but_1'>
+      <pose relative_to='Rigid_39'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>3.361206331320421e-08 -5.797225230419478e-08 -0.024515770682110055 0 0 0</pose>
+        <mass>0.0050840456308433096</mass>
+        <inertia>
+          <ixx>1.000001e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.000001e-06</iyy>
+          <iyz>-0</iyz>
+          <izz>1.0010000000000002e-09</izz>
+        </inertia>
+      </inertial>
+      <visual name='but_1_visual_0'>
+        <pose>0.036811 0.014992 -0.128622 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/but_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_41' type='fixed'>
+      <pose relative_to='but_1'>0.0 0.0 -0.05 0 0 0</pose>
+      <parent>but_1</parent>
+      <child>ngoibut_1</child>
+    </joint>
+    <link name='ngoibut_1'>
+      <pose relative_to='Rigid_41'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>3.361206331320421e-08 -5.7972252425625426e-08 2.1787204376733094e-07 0 0 0</pose>
+        <mass>8.7113746290167002e-07</mass>
+        <inertia>
+          <ixx>1.0010000000000002e-09</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.0010000000000002e-09</iyy>
+          <iyz>0</iyz>
+          <izz>1.0010000000000002e-09</izz>
+        </inertia>
+      </inertial>
+      <visual name='ngoibut_1_visual_0'>
+        <pose>0.036811 0.014992 -0.078622 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/ngoibut_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_19' type='fixed'>
+      <pose relative_to='base_link'>0.046528 -0.032032 0.599199 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>gay_arm_2_1</child>
+    </joint>
+    <link name='gay_arm_2_1'>
+      <pose relative_to='Rigid_19'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-0.04653037379792534 6.281224520371387e-08 -0.022160368895670857 0 0 0</pose>
+        <mass>0.021002942230888496</mass>
+        <inertia>
+          <ixx>1.0010000000000002e-09</ixx>
+          <ixy>-0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00017500000099999999</iyy>
+          <iyz>0</iyz>
+          <izz>0.00017500000099999999</izz>
+        </inertia>
+      </inertial>
+      <visual name='gay_arm_2_1_visual_0'>
+        <pose>-0.046528 0.032032 -0.599199 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/gay_arm_2_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='Rigid_20' type='fixed'>
+      <pose relative_to='gay_arm_2_1'>0.370169 0.159998 -0.054532 0 0 0</pose>
+      <parent>gay_arm_2_1</parent>
+      <child>camera_1</child>
+    </joint>
+    <link name='camera_1'>
+      <pose relative_to='Rigid_20'>0 0 0 0 0 0</pose>
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <inertial>
+        <pose>-0.28175572370346924 -0.12796793720039393 0.05534217907346062 0 0 0</pose>
+        <mass>0.099999794207555823</mass>
+        <inertia>
+          <ixx>6.0000001000000004e-05</ixx>
+          <ixy>-0</ixy>
+          <ixz>-1.2e-05</ixz>
+          <iyy>3.0000001e-05</iyy>
+          <iyz>0</iyz>
+          <izz>6.1000001000000002e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name='camera_1_visual_0'>
+        <pose>-0.416697 -0.127966 -0.544667 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://x500_hop/mesh_backup/meshes/camera_1.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+
+    <plugin filename="gz-sim-multicopter-motor-model-system" name="gz::sim::systems::MulticopterMotorModel">
+      <jointName>Revolute_15</jointName>
+      <linkName>quat_2_1</linkName>
+      <turningDirection>ccw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>2200</maxRotVelocity>
+      <motorConstant>3.7e-06</motorConstant>
+      <momentConstant>0.016</momentConstant>
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorNumber>0</motorNumber>
+      <rotorDragCoefficient>8.06e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+      <motorType>velocity</motorType>
+    </plugin>
+
+    <plugin filename="gz-sim-multicopter-motor-model-system" name="gz::sim::systems::MulticopterMotorModel">
+      <jointName>Revolute_17</jointName>
+      <linkName>quat_4_1</linkName>
+      <turningDirection>ccw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>2200</maxRotVelocity>
+      <motorConstant>3.7e-06</motorConstant>
+      <momentConstant>0.016</momentConstant>
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorNumber>1</motorNumber>
+      <rotorDragCoefficient>8.06e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+      <motorType>velocity</motorType>
+    </plugin>
+
+    <plugin filename="gz-sim-multicopter-motor-model-system" name="gz::sim::systems::MulticopterMotorModel">
+      <jointName>Revolute_16</jointName>
+      <linkName>quat_1_1</linkName>
+      <turningDirection>cw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>2200</maxRotVelocity>
+      <motorConstant>3.7e-06</motorConstant>
+      <momentConstant>0.016</momentConstant>
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorNumber>2</motorNumber>
+      <rotorDragCoefficient>8.06e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+      <motorType>velocity</motorType>
+    </plugin>
+
+    <plugin filename="gz-sim-multicopter-motor-model-system" name="gz::sim::systems::MulticopterMotorModel">
+      <jointName>Revolute_14</jointName>
+      <linkName>quat_3_1</linkName>
+      <turningDirection>cw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>2200</maxRotVelocity>
+      <motorConstant>3.7e-06</motorConstant>
+      <momentConstant>0.016</momentConstant>
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorNumber>3</motorNumber>
+      <rotorDragCoefficient>8.06e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+      <motorType>velocity</motorType>
+    </plugin>
+
+    <plugin filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+      <joint_name>Revolute_20</joint_name>
+      <topic>/model/x500_hop/joint/Revolute_20/cmd_pos</topic>
+      <p_gain>50.0</p_gain>
+      <i_gain>1.0</i_gain>
+      <d_gain>2.0</d_gain>
+      <cmd_max>20.0</cmd_max>
+      <cmd_min>-20.0</cmd_min>
+    </plugin>
+
+    <plugin filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+      <joint_name>Revolute_22</joint_name>
+      <topic>/model/x500_hop/joint/Revolute_22/cmd_pos</topic>
+      <p_gain>50.0</p_gain>
+      <i_gain>1.0</i_gain>
+      <d_gain>2.0</d_gain>
+      <cmd_max>20.0</cmd_max>
+      <cmd_min>-20.0</cmd_min>
+    </plugin>
+
+    <plugin filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+      <joint_name>Revolute_23</joint_name>
+      <topic>/model/x500_hop/joint/Revolute_23/cmd_pos</topic>
+      <p_gain>50.0</p_gain>
+      <i_gain>1.0</i_gain>
+      <d_gain>2.0</d_gain>
+      <cmd_max>20.0</cmd_max>
+      <cmd_min>-20.0</cmd_min>
+    </plugin>
+
+    <plugin filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+      <joint_name>Revolute_26</joint_name>
+      <topic>/model/x500_hop/joint/Revolute_26/cmd_pos</topic>
+      <p_gain>50.0</p_gain>
+      <i_gain>1.0</i_gain>
+      <d_gain>2.0</d_gain>
+      <cmd_max>20.0</cmd_max>
+      <cmd_min>-20.0</cmd_min>
+    </plugin>
+
+    <plugin filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+      <joint_name>Revolute_28</joint_name>
+      <topic>/model/x500_hop/joint/Revolute_28/cmd_pos</topic>
+      <p_gain>50.0</p_gain>
+      <i_gain>1.0</i_gain>
+      <d_gain>2.0</d_gain>
+      <cmd_max>20.0</cmd_max>
+      <cmd_min>-20.0</cmd_min>
+    </plugin>
+
+    <plugin filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+      <joint_name>Revolute_30</joint_name>
+      <topic>/model/x500_hop/joint/Revolute_30/cmd_pos</topic>
+      <p_gain>50.0</p_gain>
+      <i_gain>1.0</i_gain>
+      <d_gain>2.0</d_gain>
+      <cmd_max>20.0</cmd_max>
+      <cmd_min>-20.0</cmd_min>
+    </plugin>
+
+    <plugin filename="gz-sim-joint-state-publisher-system" name="gz::sim::systems::JointStatePublisher">
+      <joint_name>Revolute_20</joint_name>
+      <joint_name>Revolute_22</joint_name>
+      <joint_name>Revolute_23</joint_name>
+      <joint_name>Revolute_26</joint_name>
+      <joint_name>Revolute_28</joint_name>
+      <joint_name>Revolute_30</joint_name>
+      <topic>/model/x500_hop/joint_state</topic>
+      <update_rate>50</update_rate>
+    </plugin>
+
+    <plugin filename="gz-sim-odometry-publisher-system" name="gz::sim::systems::OdometryPublisher">
+      <odom_frame>world</odom_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+      <odom_topic>/model/x500_hop/odometry</odom_topic>
+      <tf_topic>/model/x500_hop/tf</tf_topic>
+      <update_rate>50</update_rate>
+      <dimensions>3</dimensions>
+    </plugin>
+
+    <plugin filename="gz-sim-pose-publisher-system" name="gz::sim::systems::PosePublisher">
+      <publish_link_pose>true</publish_link_pose>
+      <publish_visual_pose>false</publish_visual_pose>
+      <publish_collision_pose>false</publish_collision_pose>
+      <publish_sensor_pose>false</publish_sensor_pose>
+      <update_rate>50</update_rate>
+      <topic>/model/x500_hop/pose</topic>
+    </plugin>
+  </model>
+</sdf>
